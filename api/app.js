@@ -4,15 +4,23 @@
 const express = require("express");
 const morgan = require("morgan");
 const { Sequelize } = require("sequelize");
+``;
 
 // variable to enable global error logging
 const enableGlobalErrorLogging =
   process.env.ENABLE_GLOBAL_ERROR_LOGGING === "true";
 
-// create the Express app
+// creates the express app
 const app = express();
 
-app.use(express.json()); //Used to parse JSON bodies
+// for cors
+const cors = require("cors");
+
+// enable cors requests
+app.use(cors());
+
+//Used to parse JSON bodies
+app.use(express.json());
 
 // setup morgan
 app.use(morgan("dev"));
