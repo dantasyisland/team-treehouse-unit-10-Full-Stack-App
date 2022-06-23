@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import URL from '../config';
 
 export default function Courses() {
-  const [courseData, setCourses] = useState([]);
+  const [coursesData, setCourses] = useState([]);
 
   const getCourses = async () => {
     await axios.get(URL + '/courses').then((response) => {
@@ -17,14 +17,15 @@ export default function Courses() {
     getCourses();
   }, []);
 
-  const courseList = courseData.map((course) => {
+  const courseList = coursesData.map((course) => {
     return (
-      <>
-        <a className="course--module course--link" href="course-detail.html">
-          <h2 className="course--label">Course</h2>
-          <h3 className="course--title">{course.title}</h3>
-        </a>
-      </>
+      <Link
+        className="course--module course--link"
+        to={`/courses/${course.id}`}
+        key={course.id}>
+        <h2 className="course--label">Course</h2>
+        <h3 className="course--title">{course.title}</h3>
+      </Link>
     );
   });
 
@@ -43,7 +44,7 @@ export default function Courses() {
               x="0px"
               y="0px"
               viewBox="0 0 13 13"
-              class="add">
+              className="add">
               <polygon points="7,6 7,0 6,0 6,6 0,6 0,7 6,7 6,13 7,13 7,7 13,7 13,6 "></polygon>
             </svg>
             New Course

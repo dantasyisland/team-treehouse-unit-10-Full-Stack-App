@@ -6,13 +6,24 @@ import Header from './Components/Header';
 import './styles/reset.css';
 import './styles/global.css';
 
+// React Router
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CourseDetail from './Components/CourseDetail';
+
 function App() {
   return (
-    // Header
-    <>
+    <Router>
       <Header />
-      <Courses />
-    </>
+      <Switch>
+        {/* <Route exact path="/" component={Public} /> Might have to do this */}
+        <Route exact path="/">
+          <Courses />
+        </Route>
+        <Route path="/courses/:id">
+          <CourseDetail />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
