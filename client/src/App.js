@@ -1,41 +1,18 @@
-import './App.css';
-import { useState, useEffect } from 'react';
+// Components
+import Courses from './Components/Courses';
+import Header from './Components/Header';
 
-import axios from 'axios';
-import URL from './config';
+// Styles
+import './styles/reset.css';
+import './styles/global.css';
 
 function App() {
-  // JSON object
-  const [courseData, setCourses] = useState([]);
-
-  const getCourses = async () => {
-    await axios.get(URL + '/courses').then((response) => {
-      setCourses(response.data.courses);
-    });
-  };
-
-  // Run Once
-  useEffect(() => {
-    getCourses();
-  }, []);
-
-  // Use effect dependent on state
-  useEffect(() => {
-    console.log(courseData);
-    console.log(typeof courseData); // is an object
-    console.log(Array.isArray(courseData));
-  }, [courseData]);
-
-  const courseList = courseData.map((course) => {
-    return <li key={course.id}> {course.title} </li>;
-  });
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <ul>{courseList}</ul>
-      </header>
-    </div>
+    // Header
+    <>
+      <Header />
+      <Courses />
+    </>
   );
 }
 
