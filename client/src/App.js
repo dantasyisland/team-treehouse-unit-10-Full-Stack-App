@@ -1,22 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+
+import axios from 'axios';
+import URL from './config';
 
 function App() {
+  // JSON object
+  const [courseData, setCourses] = useState([]);
+
+  const getCourses = async () => {
+    await axios.get(URL + '/courses').then((response) => {
+      setCourses(response.data.courses);
+    });
+  };
+
+  // Run Once
+  useEffect(() => {
+    getCourses();
+  }, []);
+
+  // Use effect dependent on state
+  useEffect(() => {
+    console.log(courseData);
+    console.log(typeof courseData); // is an object
+    console.log(Array.isArray(courseData));
+  }, [courseData]);
+
+  const courseList = courseData.map((course) => {
+    return <li key={course.id}> {course.title} </li>;
+  });
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ul>{courseList}</ul>
       </header>
     </div>
   );
