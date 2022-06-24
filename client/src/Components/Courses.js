@@ -5,6 +5,7 @@ import URL from '../config';
 
 export default function Courses() {
   const [coursesData, setCourses] = useState([]);
+  // const [isLoaded, setIsLoaded] = useState(false);
 
   const getCourses = async () => {
     await axios.get(URL + '/courses').then((response) => {
@@ -22,6 +23,7 @@ export default function Courses() {
       <Link
         className="course--module course--link"
         to={`/courses/${course.id}`}
+        exact
         key={course.id}>
         <h2 className="course--label">Course</h2>
         <h3 className="course--title">{course.title}</h3>

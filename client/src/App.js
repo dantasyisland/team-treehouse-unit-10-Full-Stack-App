@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/">
           <Courses />
         </Route>
-        <Route path="/courses/:id">
+        <Route exact path="/courses/:id">
           <CourseDetail />
         </Route>
       </Switch>
