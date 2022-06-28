@@ -41,9 +41,10 @@ export default function CourseDetail() {
             <a href="#delete" className="button">
               Delete Course
             </a>
-            <a href="index.html" className="button button-secondary">
+            {/* COPY PASTE LINKS BUT REFER TO PATH */}
+            <Link to="/" className="button button-secondary">
               Return to List
-            </a>
+            </Link>
           </div>
           <div className="wrap">
             <h2>Course Detail</h2>
