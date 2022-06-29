@@ -23,7 +23,7 @@ export default function CourseDetail() {
 
   useEffect(() => {
     if (isLoaded) console.log(course);
-  }, [course]);
+  }, [course, isLoaded]);
 
   const handleDelete = () => {
     console.log('delete button');
