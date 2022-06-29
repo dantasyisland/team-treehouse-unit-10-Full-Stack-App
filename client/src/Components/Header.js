@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 // HOW DO I DESTRUCTURE DEEPER
 
-export default function Header({ context: { authenticatedUser } }) {
+export default function Header(props) {
+  const { authenticatedUser } = props.context;
+
   console.log(authenticatedUser);
   return (
     <header>
@@ -12,19 +14,20 @@ export default function Header({ context: { authenticatedUser } }) {
           <Link to="/">Courses</Link>
         </h1>
         <nav>
-          {/* Going to change signed vs signed out class */}
-          {/* If signed in <ul class="header--signedin">
-              <li>Welcome, Joe Smith!</li>
-              <li><Link to="/signout'>Sign Out</Link></li>
-            </ul> */}
-          <ul className="header--signedout">
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-          </ul>
+          {authenticatedUser ? (
+            <ul className="header--signedin">
+              <li>Welcome you are signed in</li>{" "}
+            </ul>
+          ) : (
+            <ul className="header--signedout">
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+              <li>
+                <Link to="/signin">Sign In</Link>
+              </li>
+            </ul>
+          )}
         </nav>
       </div>
     </header>
