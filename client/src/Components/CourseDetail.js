@@ -25,22 +25,21 @@ export default function CourseDetail() {
     if (isLoaded) console.log(course);
   }, [course]);
 
-  // if (isLoaded) {
-  //   const materialsNeeded = course.materialsNeeded;
-  //   // split at breaks to wrap in li
-  // }
+  const handleDelete = () => {
+    console.log('delete button');
+  };
 
   if (isLoaded) {
     return (
       <main>
         <div className="actions--bar">
           <div className="wrap">
-            <a href="update-course.html" className="button">
+            <Link to="/courses/:id/update" className="button">
               Update Course
-            </a>
-            <a href="#delete" className="button">
+            </Link>
+            <button className="button" onClick={handleDelete}>
               Delete Course
-            </a>
+            </button>
             {/* COPY PASTE LINKS BUT REFER TO PATH */}
             <Link to="/" className="button button-secondary">
               Return to List
@@ -48,7 +47,7 @@ export default function CourseDetail() {
           </div>
           <div className="wrap">
             <h2>Course Detail</h2>
-            <form action="">
+            <form>
               <div className="main--flex">
                 <div>
                   <h3 className="course--detail--title">{course.title}</h3>

@@ -35,8 +35,8 @@ export default function Courses() {
     <main>
       <div className="wrap main--grid">
         {courseList}
-        <a
-          href="create-course.html"
+        <Link
+          to="/courses/create"
           className="course--module course--add--module">
           <span className="course--add--title">
             {' '}
@@ -51,7 +51,7 @@ export default function Courses() {
             </svg>
             New Course
           </span>
-        </a>
+        </Link>
       </div>
     </main>
   );
