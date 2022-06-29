@@ -18,10 +18,12 @@ import withContext from "./Components/Context/Context";
 
 const UserSignInWithContext = withContext(UserSignIn);
 
+const HeaderWithContext = withContext(Header);
+
 function App() {
   return (
     <Router>
-      <Header />
+      <HeaderWithContext />
       <Switch>
         <Route exact path="/" component={Courses} />
         <Route path="/courses/create">

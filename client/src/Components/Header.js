@@ -1,7 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Header() {
+// HOW DO I DESTRUCTURE DEEPER
+
+export default function Header({ context: { authenticatedUser } }) {
+  console.log(authenticatedUser);
   return (
     <header>
       <div className="wrap header--flex">
