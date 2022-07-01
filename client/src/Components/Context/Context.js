@@ -7,16 +7,16 @@ const AppContext = React.createContext();
 export class Context extends Component {
   constructor() {
     super();
-    // this.cookie = Cookies.get("authenticatedUser");
-    // this.state = {
-    //   authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null,
-    // };
+    this.cookie = Cookies.get("authenticatedUser");
     this.state = {
-      authenticatedUser: null,
+      authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null,
     };
 
     this.data = new Data();
   }
+  state = {
+    authenticatedUser: null,
+  };
 
   // state = {
   //   authenticatedUser: null,
@@ -38,6 +38,8 @@ export class Context extends Component {
           authenticatedUser: user,
         };
       });
+      console.log(JSON.stringify(user));
+      Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
       // Set cookie - 1st name of user second is the value to store in the cookie
       // Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
     }
@@ -60,7 +62,6 @@ export class Context extends Component {
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
-        danny: this.danny,
       },
     };
     return (
