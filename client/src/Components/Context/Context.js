@@ -14,9 +14,9 @@ export class Context extends Component {
 
     this.data = new Data();
   }
-  state = {
-    authenticatedUser: null,
-  };
+  // state = {
+  //   authenticatedUser: null,
+  // };
 
   // state = {
   //   authenticatedUser: null,
@@ -38,7 +38,7 @@ export class Context extends Component {
           authenticatedUser: user,
         };
       });
-      console.log(JSON.stringify(user));
+      console.log(JSON.stringify);
       Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
       // Set cookie - 1st name of user second is the value to store in the cookie
       // Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
