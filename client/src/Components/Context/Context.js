@@ -27,8 +27,10 @@ export class Context extends Component {
   };
 
   signIn = async (username, password) => {
+    console.log("made it");
     //this.data data object from Data.js
     const user = await this.data.getUser(username, password);
+    console.log(user);
     // if user - set state to user for authenticatedUser
     if (user !== null) {
       this.setState(() => {
