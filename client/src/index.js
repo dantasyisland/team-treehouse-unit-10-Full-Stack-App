@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { Context } from "./Refactor-Auth/Context";
 
 import AppScratch from "./Refactor-Auth/AppScratch";
-
-import { Context } from "./Components/Context/Context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

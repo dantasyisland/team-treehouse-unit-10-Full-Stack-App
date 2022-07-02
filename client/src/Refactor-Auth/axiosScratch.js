@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Data from "./Data";
 
@@ -19,6 +19,7 @@ export default function AxiosScratch() {
   // write to catch error - color coded :-)
   useEffect(() => {
     console.log(`${apiURL}`);
+    // console.log(data);
 
     (async () => {
       try {
@@ -37,7 +38,7 @@ export default function AxiosScratch() {
   return (
     <div>
       axiosScratch
-      <Data />
+      {/* <Data /> */}
     </div>
   );
 }
