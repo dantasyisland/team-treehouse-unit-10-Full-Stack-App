@@ -2,11 +2,11 @@ import config from "./config";
 
 export default class Data {
   api(
-    path,
-    method = "GET",
-    body = null,
-    requiresAuth = false,
-    credentials = null
+    path, // passed to axios
+    method = "GET", // method in options
+    body = null, // in options
+    requiresAuth = false, // if true then add Authorization header
+    credentials = null // used to build auth header base 64 encoded
   ) {
     // FIX THIS PROBLEM
     const url = `http://localhost:5000/api${path}`;

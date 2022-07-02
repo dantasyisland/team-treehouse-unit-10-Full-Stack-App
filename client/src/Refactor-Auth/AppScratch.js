@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-import axios from "axios";
+import axiosScratch from "./axiosScratch";
+
 import "../styles/reset.css";
 import "./refactor.css";
+import AxiosScratch from "./axiosScratch";
 
 export default function AppScratch() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -18,6 +20,7 @@ export default function AppScratch() {
           <h1>Welcome</h1>
           <h2>Impact</h2>
           <p>Some text</p>
+          <AxiosScratch />
         </main>
       </div>
     </>
