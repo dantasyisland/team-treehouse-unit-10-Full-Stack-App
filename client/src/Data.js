@@ -8,7 +8,10 @@ export default class Data {
     requiresAuth = false,
     credentials = null
   ) {
-    const url = config.apiBaseUrl + path;
+    // FIX THIS PROBLEM
+    const url = `http://localhost:5000/api${path}`;
+    console.log(config.apiBaseUrl);
+    console.log("URL IS" + url);
     const options = {
       method,
       headers: {
@@ -35,6 +38,8 @@ export default class Data {
       username,
       password,
     });
+    console.log("Response is" + response);
+    console.dir(response);
     return response;
   }
 

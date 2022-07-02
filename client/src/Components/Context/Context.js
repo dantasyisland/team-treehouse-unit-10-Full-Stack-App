@@ -17,10 +17,10 @@ export class Context extends Component {
   // state = {
   //   authenticatedUser: null,
   // };
-
-  // state = {
-  //   authenticatedUser: null,
-  // };
+  // SETS TO NULL
+  state = {
+    authenticatedUser: null,
+  };
 
   danny = () => {
     console.log("ram");
@@ -30,8 +30,10 @@ export class Context extends Component {
     console.log("made it");
     //this.data data object from Data.js
     const user = await this.data.getUser(username, password);
-    console.log(user);
+    console.log("User is: " + user);
+
     // if user - set state to user for authenticatedUser
+    console.dir(user);
     if (user !== null) {
       this.setState(() => {
         return {
