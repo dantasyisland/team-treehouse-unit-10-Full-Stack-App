@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
-import URL from '../config';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, Link } from "react-router-dom";
+import URL from "../config";
 // Access params - id from useParams hook react router
 // fetch - same way
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 
 export default function CourseDetail() {
   const [course, setCourse] = useState({});
@@ -13,7 +13,7 @@ export default function CourseDetail() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(URL + '/courses/' + id);
+      const result = await axios(URL + "/courses/" + id);
       setCourse(result.data.course);
       setIsLoaded(true);
     };
@@ -22,11 +22,11 @@ export default function CourseDetail() {
   }, [id]);
 
   useEffect(() => {
-    if (isLoaded) console.log(course);
+    if (isLoaded) console.log({ course });
   }, [course, isLoaded]);
 
   const handleDelete = () => {
-    console.log('delete button');
+    console.log("delete button");
   };
 
   if (isLoaded) {

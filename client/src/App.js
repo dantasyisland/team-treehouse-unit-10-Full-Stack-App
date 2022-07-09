@@ -31,7 +31,9 @@ function App() {
         </Route>
         <Route exact path="/courses/:id" component={CourseDetail}></Route>
         <Route path="/signin" component={UserSignInWithContext}></Route>
-        <Route path="/signup"></Route>
+        <Route path="/signup">
+          <UserSignUp />
+        </Route>
         <Route path="/signout"></Route>
       </Switch>
     </Router>
