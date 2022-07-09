@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import URL from "../config";
+import config from "../config";
 
 export default function Courses() {
   const [coursesData, setCourses] = useState([]);
   // const [isLoaded, setIsLoaded] = useState(false);
 
   const getCourses = async () => {
-    await axios.get(URL + "/courses").then((response) => {
+    await axios.get(config.apiBaseUrl + "/courses").then((response) => {
       setCourses(response.data.courses);
     });
   };

@@ -12,11 +12,7 @@ export default function Header({ context: { authenticatedUser } }) {
           <Link to="/">Courses</Link>
         </h1>
         <nav>
-          {/* Going to change signed vs signed out class */}
-          {/* If signed in <ul class="header--signedin">
-              <li>Welcome, Joe Smith!</li>
-              <li><Link to="/signout'>Sign Out</Link></li>
-            </ul> */}
+          {authenticatedUser ? <p>Yes</p> : <p>No</p>}
           <ul className="header--signedout">
             <li>
               <Link to="/signup">Sign Up</Link>

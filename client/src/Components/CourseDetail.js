@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import URL from "../config";
-// Access params - id from useParams hook react router
-// fetch - same way
+import config from "../config";
 import ReactMarkdown from "react-markdown";
 
 export default function CourseDetail() {
@@ -13,7 +11,7 @@ export default function CourseDetail() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(URL + "/courses/" + id);
+      const result = await axios(config.apiBaseUrl + "/courses/" + id);
       setCourse(result.data.course);
       setIsLoaded(true);
     };
