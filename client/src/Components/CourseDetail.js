@@ -19,10 +19,6 @@ export default function CourseDetail() {
     fetchData();
   }, [id]);
 
-  useEffect(() => {
-    if (isLoaded) console.log({ course });
-  }, [course, isLoaded]);
-
   const handleDelete = () => {
     console.log("delete button");
   };

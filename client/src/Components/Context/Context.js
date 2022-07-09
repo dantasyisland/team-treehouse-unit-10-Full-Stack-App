@@ -23,6 +23,7 @@ export class Context extends Component {
     //this.data data object from Data.js
     const user = await this.data.getUser(username, password);
     // if user - set state to user for authenticatedUser
+    console.log("%c From Context.js:", "color:blue");
     console.log(user);
     if (user !== null) {
       this.setState(() => {

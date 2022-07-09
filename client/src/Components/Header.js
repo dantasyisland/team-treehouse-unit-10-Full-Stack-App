@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 // HOW DO I DESTRUCTURE DEEPER
 
 export default function Header({ context: { authenticatedUser } }) {
+  console.log(
+    "%c From Header - authenticatedUser is: ",
+    "color:blue;font-size:16px "
+  );
   console.log(authenticatedUser);
   return (
     <header>
