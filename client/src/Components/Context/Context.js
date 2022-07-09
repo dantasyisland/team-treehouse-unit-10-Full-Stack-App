@@ -55,6 +55,7 @@ export class Context extends Component {
       },
     };
     return (
+      // Hello comment
       <AppContext.Provider value={value}>
         {this.props.children}
       </AppContext.Provider>
