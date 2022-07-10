@@ -1,4 +1,5 @@
 import config from "./config";
+import axios from "axios";
 
 export default class Data {
   api(
@@ -27,7 +28,7 @@ export default class Data {
       );
       options.headers["Authorization"] = `Basic ${encodedCredentials}`;
     }
-    return fetch(url, options);
+    return axios(url, options);
   }
 
   async getUser(username, password) {
