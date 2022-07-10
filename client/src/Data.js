@@ -45,7 +45,7 @@ export default class Data {
       throw new Error();
     }
   }
-  // against creatUser in
+  // returns an empty array if true - else errors
   async createUser(user) {
     const response = await this.api("/users", "POST", user);
     if (response.status === 201) {

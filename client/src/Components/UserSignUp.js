@@ -30,7 +30,20 @@ export default class UserSignUp extends Component {
     };
     */
     const { firstName, lastName, emailAddress, password } = this.state;
-    context.actions.signUp(firstName, lastName, emailAddress, password);
+    context.actions
+      .signUp(firstName, lastName, emailAddress, password)
+      .then((user) => {
+        if (user == null) {
+          this.setState(() => {
+            // data.errors from Data.js
+            return {
+              errors: [
+                "Sign up was unsuccessful but you need to figure out how to get the error messages in here",
+              ],
+            };
+          });
+        }
+      });
   };
 
   cancel = () => {
