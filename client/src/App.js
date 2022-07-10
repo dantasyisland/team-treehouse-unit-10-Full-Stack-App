@@ -17,6 +17,7 @@ import UserSignUp from "./Components/UserSignUp";
 import withContext from "./Components/Context/Context";
 
 const UserSignInWithContext = withContext(UserSignIn);
+const UserSignUpWithContext = withContext(UserSignUp);
 
 const HeaderWithContext = withContext(Header);
 
@@ -31,9 +32,7 @@ function App() {
         </Route>
         <Route exact path="/courses/:id" component={CourseDetail}></Route>
         <Route path="/signin" component={UserSignInWithContext}></Route>
-        <Route path="/signup">
-          <UserSignUp />
-        </Route>
+        <Route path="/signup" component={UserSignUpWithContext}></Route>
         <Route path="/signout"></Route>
       </Switch>
     </Router>

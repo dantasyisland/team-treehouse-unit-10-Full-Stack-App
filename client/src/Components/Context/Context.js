@@ -36,20 +36,25 @@ export class Context extends Component {
     return user;
   };
 
-  signUp = async (username, password, firstName, lastName) => {
+  signUp = async (firstName, lastName, emailAddress, password) => {
     // will return a response an empty array is successful from Data.js
     // still stringify the user
     // set State for authenticatedUser
     const userInfo = {
-      username,
-      password,
       firstName,
       lastName,
+      emailAddress,
+      password,
     };
     const user = await this.data.createUser(userInfo);
     if (user !== null) {
       console.log("did it");
       console.log(user);
+      this.setState(() => {
+        return {
+          authenticatedUser: user,
+        };
+      });
     }
   };
 
@@ -69,6 +74,7 @@ export class Context extends Component {
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
+        signUp: this.signUp,
       },
     };
     return (
