@@ -1,5 +1,4 @@
 import config from "./config";
-import axios from "axios";
 
 export default class Data {
   api(
@@ -28,7 +27,7 @@ export default class Data {
       );
       options.headers["Authorization"] = `Basic ${encodedCredentials}`;
     }
-    return axios(url, options);
+    return fetch(url, options);
   }
 
   async getUser(username, password) {
@@ -46,7 +45,7 @@ export default class Data {
       throw new Error();
     }
   }
-
+  // against creatUser in
   async createUser(user) {
     const response = await this.api("/users", "POST", user);
     if (response.status === 201) {

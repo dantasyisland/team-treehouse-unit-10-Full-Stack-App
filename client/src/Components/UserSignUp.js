@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Form from "./Form";
 
 export default class UserSignUp extends Component {
   state = {
@@ -20,7 +21,21 @@ export default class UserSignUp extends Component {
       3. If I get a userCreated I can give the user a cookie in createAccount which will be in context
   ***/
 
+  submit = () => {};
+
+  cancel = () => {};
+
+  change = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState(() => {
+      return {
+        [name]: value,
+      };
+    });
+  };
+
   render() {
-    return <div>UserSignUp</div>;
+    return <Form />;
   }
 }

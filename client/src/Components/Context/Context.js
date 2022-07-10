@@ -24,7 +24,6 @@ export class Context extends Component {
     const user = await this.data.getUser(username, password);
     // if user - set state to user for authenticatedUser
     console.log("%c From Context.js:", "color:blue");
-    console.log(user);
     if (user !== null) {
       this.setState(() => {
         return {
@@ -35,6 +34,23 @@ export class Context extends Component {
       Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
     }
     return user;
+  };
+
+  signUp = async (username, password, firstName, lastName) => {
+    // will return a response an empty array is successful from Data.js
+    // still stringify the user
+    // set State for authenticatedUser
+    const userInfo = {
+      username,
+      password,
+      firstName,
+      lastName,
+    };
+    const user = await this.data.createUser(userInfo);
+    if (user !== null) {
+      console.log("did it");
+      console.log(user);
+    }
   };
 
   signOut = () => {

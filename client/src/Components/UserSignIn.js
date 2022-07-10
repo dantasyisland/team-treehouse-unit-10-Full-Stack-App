@@ -50,18 +50,11 @@ export default class UserSignIn extends Component {
         [name]: value,
       };
     });
-    console.log(
-      "%c The value return is for:",
-      "color:blue; border:1px solid black; font-size:18px;"
-    );
-    console.log(`${name} and it is ${value}`);
   };
-
-  // cause put them in a template literal?
 
   render() {
     const { username, password, errors } = this.state;
-
+    console.log("From UserSignIn");
     return (
       <Form
         submit={this.submit}
