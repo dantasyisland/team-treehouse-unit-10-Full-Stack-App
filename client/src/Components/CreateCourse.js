@@ -30,8 +30,12 @@ export default class CreateCourse extends Component {
   render() {
     const { title, description, estimatedTime, materialsNeeded, errors } =
       this.state;
-    const { context } = this.props;
-    console.log(context);
+    const {
+      context: {
+        authenticatedUser: { user },
+      },
+    } = this.props;
+    console.log(user);
     return (
       <Form
         headerText={"Create Course"}
@@ -50,7 +54,10 @@ export default class CreateCourse extends Component {
               placeholder="Course Title"
             />
             <p>
-              By <span>USER FROM CONTEXT</span>
+              By{" "}
+              <span>
+                {user.firstName} {user.lastName}
+              </span>
             </p>
             <textarea
               id="description"
