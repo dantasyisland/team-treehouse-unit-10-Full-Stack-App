@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Form({
+  headerText,
   submit,
   submitButtonText,
   cancel,
@@ -19,7 +20,7 @@ export default function Form({
 
   return (
     <div className="form--centered">
-      <h2>Sign In</h2>
+      <h2>{headerText}</h2>
       <ErrorsDisplay errors={errors} />
       <form onSubmit={handleSubmit} type="submit">
         {elements}

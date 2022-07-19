@@ -57,6 +57,7 @@ export default class UserSignIn extends Component {
     console.log("From UserSignIn");
     return (
       <Form
+        headerText={"Sign In"}
         submit={this.submit}
         submitButtonText="Sign In"
         errors={errors}

@@ -24,26 +24,22 @@ export default class UserSignUp extends Component {
 
   submit = () => {
     const { context } = this.props;
-    /* MIGHT NEED - protected route push
-    const { from } = this.props.location.state || {
-      from: { path: "/authenticated" },
-    };
-    */
     const { firstName, lastName, emailAddress, password } = this.state;
-    context.actions
-      .signUp(firstName, lastName, emailAddress, password)
-      .then((user) => {
-        if (user == null) {
-          this.setState(() => {
-            // data.errors from Data.js
-            return {
-              errors: [
-                "Sign up was unsuccessful but you need to figure out how to get the error messages in here",
-              ],
-            };
-          });
-        }
-      });
+    const user = {
+      firstName,
+      lastName,
+      emailAddress,
+      password,
+    };
+    context.data.createUser(user).then((errors) => {
+      if (errors.length) {
+        this.setState({ errors });
+      } else {
+        context.actions.signIn(emailAddress, password).then(() => {
+          this.props.history.push("/");
+        });
+      }
+    });
   };
 
   cancel = () => {
@@ -65,6 +61,7 @@ export default class UserSignUp extends Component {
     const { firstName, lastName, emailAddress, password, errors } = this.state;
     return (
       <Form
+        headerText={"Sign Up"}
         submit={this.submit}
         submitButtonText="Sign Up!"
         cancel={this.cancel}
