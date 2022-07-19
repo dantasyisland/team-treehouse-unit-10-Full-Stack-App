@@ -21,7 +21,10 @@ export default class CreateCourse extends Component {
       };
     });
   };
-  submit = () => {};
+  submit = () => {
+    const { context } = this.props;
+    const { title, description, estimatedTime, materialsNeeded } = this.state;
+  };
 
   cancel = () => {
     this.props.history.push("/");
