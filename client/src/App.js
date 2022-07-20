@@ -10,6 +10,7 @@ import "./styles/global.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CourseDetail from "./Components/CourseDetail";
 import CreateCourse from "./Components/CreateCourse";
+import UpdateCourse from "./Components/UpdateCourse";
 import UserSignIn from "./Components/UserSignIn";
 import UserSignOut from "./Components/UserSignOut";
 import UserSignUp from "./Components/UserSignUp";
@@ -20,6 +21,7 @@ const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignOutWithContext = withContext(UserSignOut);
 const CreateCourseWithContext = withContext(CreateCourse);
+const UpdateCourseWithContext = withContext(UpdateCourse);
 
 const HeaderWithContext = withContext(Header);
 
@@ -31,6 +33,7 @@ function App() {
         <Route exact path="/" component={Courses} />
         <Route path="/courses/create" component={CreateCourseWithContext} />
         <Route exact path="/courses/:id" component={CourseDetail} />
+        <Route path="/courses/:id/update" component={UpdateCourseWithContext} />
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />

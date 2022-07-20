@@ -28,7 +28,7 @@ export default function CourseDetail() {
       <main>
         <div className="actions--bar">
           <div className="wrap">
-            <Link to="/courses/:id/update" className="button">
+            <Link to={`/courses/${id}/update`} className="button">
               Update Course
             </Link>
             <button className="button" onClick={handleDelete}>
