@@ -39,6 +39,16 @@ export default class CreateCourse extends Component {
       userId: id,
       emailAddress,
     };
+
+    context.actions
+      .createCourse(courseBody, emailAddress, password)
+      .then((errors) => {
+        if (errors.length) {
+          this.setState({ errors });
+        } else {
+          this.props.history.push("/");
+        }
+      });
   };
 
   cancel = () => {
@@ -58,7 +68,7 @@ export default class CreateCourse extends Component {
       <Form
         headerText={"Create Course"}
         submit={this.submit}
-        submitButtonText="Sign Up!"
+        submitButtonText="Create Course"
         cancel={this.cancel}
         errors={errors}
         elements={

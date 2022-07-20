@@ -10,9 +10,7 @@ export default class UserSignIn extends Component {
 
   submit = () => {
     const { context } = this.props;
-    const { from } = this.props.location.state || {
-      from: { path: "/authenticated" },
-    };
+
     const { username, password } = this.state;
 
     context.actions
@@ -26,7 +24,7 @@ export default class UserSignIn extends Component {
             };
           });
         } else {
-          this.props.history.push(from);
+          this.props.history.push("/");
           console.log(`SUCCESS! ${username} is now signed in!`);
         }
       })
