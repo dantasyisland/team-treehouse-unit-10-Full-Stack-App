@@ -24,6 +24,21 @@ export default class CreateCourse extends Component {
   submit = () => {
     const { context } = this.props;
     const { title, description, estimatedTime, materialsNeeded } = this.state;
+    const {
+      context: {
+        authenticatedUser: {
+          user: { id, password, emailAddress },
+        },
+      },
+    } = this.props;
+    const courseBody = {
+      title,
+      description,
+      estimatedTime,
+      materialsNeeded,
+      userId: id,
+      emailAddress,
+    };
   };
 
   cancel = () => {

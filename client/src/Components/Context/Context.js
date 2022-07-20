@@ -30,6 +30,8 @@ export class Context extends Component {
           authenticatedUser: user,
         };
       });
+      user.user.password = password;
+
       // Set cookie - 1st name of user second is the value to store in the cookie
       Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
     }
