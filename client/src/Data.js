@@ -89,10 +89,13 @@ export default class Data {
       }
     );
 
-    if (response.status === 201) {
+    console.log(response);
+
+    if (response.status === 204) {
       return [];
-    } else if (response.status === 400) {
+    } else if (response.status === 403) {
       return response.json().then((data) => {
+        console.log(data);
         return data.errors;
       });
     } else {
