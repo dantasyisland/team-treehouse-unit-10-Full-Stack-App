@@ -47,6 +47,18 @@ export class Context extends Component {
     return courseToCreate;
   };
 
+  updateCourse = async (course, username, password) => {
+    console.log("clicked");
+    console.log(course);
+    const courseToUpdate = await this.data.updateCourse(
+      course,
+      username,
+      password
+    );
+
+    return courseToUpdate;
+  };
+
   signUp = async (firstName, lastName, emailAddress, password) => {
     // will return a response an empty array is successful from Data.js
     // still stringify the user
@@ -77,6 +89,7 @@ export class Context extends Component {
     });
     Cookies.remove("authenticatedUser");
   };
+
   render() {
     const { authenticatedUser } = this.state;
     const value = {
@@ -87,6 +100,7 @@ export class Context extends Component {
         signOut: this.signOut,
         signUp: this.signUp,
         createCourse: this.createCourse,
+        updateCourse: this.updateCourse,
       },
     };
     return (
