@@ -11,7 +11,12 @@ export default class UpdateCourse extends Component {
     const { id } = this.props.match.params.id; // This eliminates useless constructor
     this.state = {
       isLoaded: false,
-      course: {},
+      course: {
+        title: "",
+        description: "",
+        estimatedTime: "",
+        materialsNeeded: "",
+      },
       errors: [],
     };
   }
@@ -27,10 +32,26 @@ export default class UpdateCourse extends Component {
           this.setState({ course: response.data.course });
         }
       );
+      console.log(this.state.course);
     };
 
     course();
   }
+
+  change = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState(() => {
+      return {
+        [name]: value,
+      };
+    });
+    console.log(
+      "%c --MUST SET STATE IN COURSE OBJECT---",
+      "color:blue;font-size:1.2rem"
+    );
+    console.log(this.state);
+  };
 
   submit = () => {
     console.log("submit clicked");
@@ -46,28 +67,59 @@ export default class UpdateCourse extends Component {
       },
     } = this.props;
 
+    const { title, description, estimatedTime, materialsNeeded } =
+      this.state.course;
+
     return (
-      <>
-        <Form
-          headerText={"Update Course"}
-          submit={this.submit}
-          submitButtonText={"Update Course"}
-          cancel={this.cancel}
-          errors={this.state.errors}
-          elements={
-            <>
-              <input
-                id="title"
-                name="title"
-                type="text"
-                value={this.state.course.title}
-                onChange={this.change}
-                placeholder="Course Title"
-              />
-            </>
-          }
-        />
-      </>
+      <Form
+        headerText={"Update Course"}
+        submit={this.submit}
+        submitButtonText={"Update Course"}
+        cancel={this.cancel}
+        errors={this.state.errors}
+        elements={
+          <>
+            <input
+              id="title"
+              name="title"
+              type="text"
+              defaultValue={title}
+              onChange={this.change}
+              placeholder="Course Title"
+            />
+            <p>
+              By{" "}
+              <span>
+                {user.firstName} {user.lastName}
+              </span>
+            </p>
+            <textarea
+              id="description"
+              name="description"
+              type="text"
+              defaultValue={description}
+              onChange={this.change}
+              placeholder="Course Description"
+            />
+            <input
+              id="estimatedTime"
+              name="estimatedTime"
+              type="text"
+              defaultValue={estimatedTime}
+              onChange={this.change}
+              placeholder="Estimated Time"
+            />
+            <textarea
+              id="materialsNeeded"
+              name="materialsNeeded"
+              type="text"
+              defaultValue={materialsNeeded}
+              onChange={this.change}
+              placeholder="Materials Needed"
+            />
+          </>
+        }
+      />
     );
   }
 }
