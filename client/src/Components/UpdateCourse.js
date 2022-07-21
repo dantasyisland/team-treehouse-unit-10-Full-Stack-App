@@ -39,11 +39,16 @@ export default class UpdateCourse extends Component {
   }
 
   change = (event) => {
+    console.log("%o", event);
     const name = event.target.name;
     const value = event.target.value;
     this.setState(() => {
       return {
-        [name]: value,
+        ...this.state,
+        course: {
+          ...this.state.course,
+          [name]: value,
+        },
       };
     });
     console.log(
