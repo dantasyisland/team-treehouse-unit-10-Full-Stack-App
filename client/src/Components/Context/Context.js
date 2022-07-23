@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, createContext } from "react";
 import Cookies from "js-cookie";
 import Data from "../../Data";
 
-const AppContext = React.createContext();
+const AppContext = createContext();
 
 export class Context extends Component {
   constructor() {
