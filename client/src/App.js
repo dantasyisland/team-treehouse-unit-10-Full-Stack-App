@@ -14,6 +14,7 @@ import UpdateCourse from "./Components/UpdateCourse";
 import UserSignIn from "./Components/UserSignIn";
 import UserSignOut from "./Components/UserSignOut";
 import UserSignUp from "./Components/UserSignUp";
+import PrivateRoute from "./Components/PrivateRoute";
 
 import withContext from "./Components/Context/Context";
 
@@ -33,7 +34,10 @@ function App() {
         <Route exact path="/" component={Courses} />
         <Route path="/courses/create" component={CreateCourseWithContext} />
         <Route exact path="/courses/:id" component={CourseDetail} />
-        <Route path="/courses/:id/update" component={UpdateCourseWithContext} />
+        <PrivateRoute
+          path="/courses/:id/update"
+          component={UpdateCourseWithContext}
+        />
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />

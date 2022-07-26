@@ -112,7 +112,7 @@ export class Context extends Component {
   }
 }
 
-export const Consumer = Context.Consumer;
+export const Consumer = AppContext.Consumer;
 
 export default function withContext(Component) {
   return function ContextComponent(props) {
