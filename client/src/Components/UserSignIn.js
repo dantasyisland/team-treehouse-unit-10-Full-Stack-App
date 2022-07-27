@@ -25,11 +25,9 @@ export default class UserSignIn extends Component {
           });
         } else {
           this.props.history.push("/");
-          console.log(`SUCCESS! ${username} is now signed in!`);
         }
       })
       .catch((err) => {
-        console.log(err);
         this.props.history.push("/error");
       });
   };
@@ -52,7 +50,7 @@ export default class UserSignIn extends Component {
 
   render() {
     const { username, password, errors } = this.state;
-    console.log("From UserSignIn");
+
     return (
       <Form
         headerText={"Sign In"}

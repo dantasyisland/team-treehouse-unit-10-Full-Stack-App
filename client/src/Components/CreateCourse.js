@@ -63,7 +63,7 @@ export default class CreateCourse extends Component {
         authenticatedUser: { user },
       },
     } = this.props;
-    console.log(user);
+
     return (
       <Form
         headerText={"Create Course"}

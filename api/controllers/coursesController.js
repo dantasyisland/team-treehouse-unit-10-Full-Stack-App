@@ -1,23 +1,23 @@
-const { Course, User } = require("../models/");
-const auth = require("basic-auth");
-const { asyncHandler } = require("../middleware/async-handler");
+const { Course, User } = require('../models/');
+const auth = require('basic-auth');
+const { asyncHandler } = require('../middleware/async-handler');
 
 // Will Get Courses and user associate with each course
 const getCourses = asyncHandler(async (req, res) => {
   const courses = await Course.findAll({
     attributes: {
-      exclude: ["createdAt", "updatedAt"],
+      exclude: ['createdAt', 'updatedAt']
     },
     include: [
       {
         model: User,
-        as: "user",
-        attributes: ["firstName", "lastName"],
-      },
-    ],
+        as: 'user',
+        attributes: ['firstName', 'lastName']
+      }
+    ]
   });
   res.status(200).json({
-    courses,
+    courses
   });
 });
 
@@ -25,17 +25,17 @@ const getCourses = asyncHandler(async (req, res) => {
 const getCourse = asyncHandler(async (req, res) => {
   const course = await Course.findByPk(req.params.id, {
     attributes: {
-      exclude: ["createdAt", "updatedAt"],
+      exclude: ['createdAt', 'updatedAt']
     },
     include: [
       {
         model: User,
-        as: "user",
+        as: 'user',
         attributes: {
-          exclude: ["password", "createdAt", "updatedAt"],
-        },
-      },
-    ],
+          exclude: ['password', 'createdAt', 'updatedAt']
+        }
+      }
+    ]
   });
   res.status(200).json({ course });
 });
@@ -49,8 +49,8 @@ const createCourse = asyncHandler(async (req, res) => {
   } catch (error) {
     console.error(error);
     if (
-      error.name === "SequelizeValidationError" ||
-      error.name === "SequelizeUniqueConstraintError"
+      error.name === 'SequelizeValidationError' ||
+      error.name === 'SequelizeUniqueConstraintError'
     ) {
       const errors = error.errors.map((err) => err.message);
       res.status(400).json({ errors });
@@ -70,9 +70,9 @@ const updateCourse = asyncHandler(async (req, res) => {
       include: [
         {
           model: User,
-          as: "user",
-        },
-      ],
+          as: 'user'
+        }
+      ]
     });
     if (course.user.emailAddress === credentials.name) {
       await course.update(req.body);
@@ -83,8 +83,8 @@ const updateCourse = asyncHandler(async (req, res) => {
   } catch (error) {
     console.error(error);
     if (
-      error.name === "SequelizeValidationError" ||
-      error.name === "SequelizeUniqueConstraintError"
+      error.name === 'SequelizeValidationError' ||
+      error.name === 'SequelizeUniqueConstraintError'
     ) {
       const errors = error.errors.map((err) => err.message);
       res.status(403).json({ errors });
@@ -104,9 +104,9 @@ const deleteCourse = asyncHandler(async (req, res) => {
       include: [
         {
           model: User,
-          as: "user",
-        },
-      ],
+          as: 'user'
+        }
+      ]
     });
     if (course) {
       if (course.user.emailAddress === credentials.name) {
@@ -127,5 +127,5 @@ module.exports = {
   createCourse,
   updateCourse,
   getCourse,
-  deleteCourse,
+  deleteCourse
 };

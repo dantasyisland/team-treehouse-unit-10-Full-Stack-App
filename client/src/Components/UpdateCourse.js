@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import Form from "./Form";
 import axios from "axios";
 import config from "../config";
-import { useParams } from "react-router-dom";
 
 export default class UpdateCourse extends Component {
   constructor(props) {
     super(props);
     // has scope in constructor - global scope variables for class components?
-    const { id } = this.props.match.params.id; // This eliminates useless constructor
     this.state = {
       isLoaded: false,
       course: {
@@ -32,14 +30,12 @@ export default class UpdateCourse extends Component {
           this.setState({ course: response.data.course });
         }
       );
-      console.log(this.state.course);
     };
 
     course();
   }
 
   change = (event) => {
-    console.log("%o", event);
     const name = event.target.name;
     const value = event.target.value;
     this.setState(() => {
@@ -51,11 +47,6 @@ export default class UpdateCourse extends Component {
         },
       };
     });
-    console.log(
-      "%c --MUST SET STATE IN COURSE OBJECT---",
-      "color:blue;font-size:1.2rem"
-    );
-    console.log(this.state);
   };
 
   submit = () => {

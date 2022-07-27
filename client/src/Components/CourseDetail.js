@@ -9,7 +9,6 @@ export default function CourseDetail({ context, history }) {
   const [course, setCourse] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
-  console.log(context);
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(config.apiBaseUrl + "/courses/" + id);
@@ -27,9 +26,7 @@ export default function CourseDetail({ context, history }) {
       context.actions
         .deleteCourse(id, user.emailAddress, user.password)
         .then((response) => {
-          console.log(response);
           if (response.status !== 204) {
-            console.log("problem");
           } else {
             history.push("/");
           }
@@ -39,21 +36,28 @@ export default function CourseDetail({ context, history }) {
     }
   };
 
+  const authenticatedActions =
+    authenticatedUser !== null ? (
+      <>
+        <Link to={`/courses/${id}/update`} className="button">
+          Update Course
+        </Link>
+        <button className="button" onClick={handleDelete}>
+          Delete Course
+        </button>
+      </>
+    ) : null;
+
   if (isLoaded) {
-    return (
+    return course !== null ? (
       <main>
         <div className="actions--bar">
           <div className="wrap">
-            <Link to={`/courses/${id}/update`} className="button">
-              Update Course
-            </Link>
-            <button className="button" onClick={handleDelete}>
-              Delete Course
-            </button>
             {/* COPY PASTE LINKS BUT REFER TO PATH */}
             <Link to="/" className="button button-secondary">
               Return to List
             </Link>
+            {authenticatedActions}
           </div>
           <div className="wrap">
             <h2>Course Detail</h2>
@@ -78,6 +82,8 @@ export default function CourseDetail({ context, history }) {
           </div>
         </div>
       </main>
+    ) : (
+      <p>Hey</p>
     );
   }
 }

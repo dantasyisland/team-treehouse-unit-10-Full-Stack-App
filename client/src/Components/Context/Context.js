@@ -20,10 +20,8 @@ export class Context extends Component {
   };
 
   signIn = async (username, password) => {
-    //this.data data object from Data.js
     const user = await this.data.getUser(username, password);
-    // if user - set state to user for authenticatedUser
-    console.log("%c From Context.js:", "color:blue");
+
     if (user !== null) {
       this.setState(() => {
         return {
@@ -32,7 +30,6 @@ export class Context extends Component {
       });
       user.user.password = password;
 
-      // Set cookie - 1st name of user second is the value to store in the cookie
       Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
     }
     return user;
@@ -48,8 +45,6 @@ export class Context extends Component {
   };
 
   updateCourse = async (course, username, password) => {
-    console.log("clicked");
-    console.log(course);
     const courseToUpdate = await this.data.updateCourse(
       course,
       username,
@@ -66,15 +61,11 @@ export class Context extends Component {
       password
     );
     if (courseToDelete !== null) {
-      console.log("yay");
       return courseToDelete;
     }
   };
 
   signUp = async (firstName, lastName, emailAddress, password) => {
-    // will return a response an empty array is successful from Data.js
-    // still stringify the user
-    // set State for authenticatedUser
     const userInfo = {
       firstName,
       lastName,
@@ -83,8 +74,6 @@ export class Context extends Component {
     };
     const user = await this.data.createUser(userInfo);
     if (user !== null) {
-      console.log("did it");
-      console.log(user);
       this.setState(() => {
         return {
           authenticatedUser: user,
@@ -117,7 +106,6 @@ export class Context extends Component {
       },
     };
     return (
-      // Hello comment
       <AppContext.Provider value={value}>
         {this.props.children}
       </AppContext.Provider>
