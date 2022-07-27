@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import config from "../config";
 import ReactMarkdown from "react-markdown";
 
-export default function CourseDetail() {
+export default function CourseDetail(props) {
+  const { context } = props.context;
   const [course, setCourse] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
-
+  console.log(context);
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(config.apiBaseUrl + "/courses/" + id);
