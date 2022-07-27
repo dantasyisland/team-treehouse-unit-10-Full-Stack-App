@@ -4,8 +4,8 @@ import { useParams, Link } from "react-router-dom";
 import config from "../config";
 import ReactMarkdown from "react-markdown";
 
-export default function CourseDetail(props) {
-  const { context } = props.context;
+export default function CourseDetail({ context, history }) {
+  const { authenticatedUser } = context;
   const [course, setCourse] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
@@ -21,7 +21,22 @@ export default function CourseDetail(props) {
   }, [id]);
 
   const handleDelete = () => {
-    console.log("delete button");
+    const { user } = authenticatedUser;
+
+    if (authenticatedUser !== null) {
+      context.actions
+        .deleteCourse(id, user.emailAddress, user.password)
+        .then((response) => {
+          console.log(response);
+          if (response.status !== 204) {
+            console.log("problem");
+          } else {
+            history.push("/");
+          }
+        });
+    } else {
+      history.push("/signin");
+    }
   };
 
   if (isLoaded) {

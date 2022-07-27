@@ -65,12 +65,16 @@ export default class UpdateCourse extends Component {
       },
     } = this.props;
     const { course } = this.state;
-    console.log("submit clicked");
-    this.props.context.actions.updateCourse(
-      course,
-      user.emailAddress,
-      user.password
-    );
+
+    this.props.context.actions
+      .updateCourse(course, user.emailAddress, user.password)
+      .then((errors) => {
+        if (errors.length) {
+          this.setState({ errors });
+        } else {
+          this.props.history.push("/");
+        }
+      });
   };
 
   cancel = () => {

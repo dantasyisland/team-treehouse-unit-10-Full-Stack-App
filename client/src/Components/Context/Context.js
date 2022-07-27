@@ -59,6 +59,18 @@ export class Context extends Component {
     return courseToUpdate;
   };
 
+  deleteCourse = async (course, username, password) => {
+    const courseToDelete = await this.data.deleteCourse(
+      course,
+      username,
+      password
+    );
+    if (courseToDelete !== null) {
+      console.log("yay");
+      return courseToDelete;
+    }
+  };
+
   signUp = async (firstName, lastName, emailAddress, password) => {
     // will return a response an empty array is successful from Data.js
     // still stringify the user
@@ -101,6 +113,7 @@ export class Context extends Component {
         signUp: this.signUp,
         createCourse: this.createCourse,
         updateCourse: this.updateCourse,
+        deleteCourse: this.deleteCourse,
       },
     };
     return (
