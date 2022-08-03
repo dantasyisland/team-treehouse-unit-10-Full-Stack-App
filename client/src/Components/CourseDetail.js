@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import config from "../config";
@@ -22,18 +22,45 @@ export default function CourseDetail({ context, history }) {
   const handleDelete = () => {
     const { user } = authenticatedUser;
 
+    /**
+     * Cannot read properties of undefined - what is deleteCourse from context returning? - handle forbidden
+     */
+
+    /*
     if (authenticatedUser !== null) {
-      context.actions
-        .deleteCourse(id, user.emailAddress, user.password)
-        .then((response) => {
-          if (response.status !== 204) {
-          } else {
-            history.push("/");
-          }
-        });
+      context.actions.deleteCourse(id, user.emailAddress, user.password);
+      // .then((response) => {
+      //   // console.log(response);
+      //   // if (response.status !== 204) {
+      //   // } else {
+      //   //   history.push("/");
+      //   // }
+      // });
+      history.push("/");
     } else {
       history.push("/signin");
     }
+*/
+
+    /*
+    const {
+      context: {
+        authenticatedUser: { user },
+      },
+    } = this.props;
+    const { course } = this.state;
+
+    this.props.context.actions
+      .updateCourse(course, user.emailAddress, user.password)
+      .then((errors) => {
+        if (errors.length) {
+          this.setState({ errors });
+        } else {
+          this.props.history.push("/");
+        }
+      });
+
+    */
   };
 
   const authenticatedActions =
@@ -83,7 +110,7 @@ export default function CourseDetail({ context, history }) {
         </div>
       </main>
     ) : (
-      <p>Hey</p>
+      <p>Course Not Found</p>
     );
   }
 }

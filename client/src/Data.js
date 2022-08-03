@@ -110,13 +110,15 @@ export default class Data {
       }
     );
 
+    console.log(response);
+
     if (response.status === 204) {
       return response;
     } else if (response.status === 403) {
-      console.log(response);
-      // return response.json().then((data) => {
-      //   return data.errors;
-      // });
+      console.log(response.status);
+      return response.json().then((data) => {
+        return data.errors;
+      });
     } else {
       throw new Error();
     }
