@@ -24,12 +24,9 @@ export default class UpdateCourse extends Component {
 
     const course = async () => {
       const { id } = this.props.match.params;
-
-      const course = await axios(config.apiBaseUrl + "/courses/" + id).then(
-        (response) => {
-          this.setState({ course: response.data.course });
-        }
-      );
+      await axios(config.apiBaseUrl + "/courses/" + id).then((response) => {
+        this.setState({ course: response.data.course });
+      });
     };
 
     course();

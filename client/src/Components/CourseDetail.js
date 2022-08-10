@@ -19,13 +19,13 @@ export default function CourseDetail({ context, history }) {
     fetchData();
   }, [id]);
 
-  const handleDelete = () => {
-    const { user } = authenticatedUser;
+  useEffect(() => {}, [course]);
 
+  const handleDelete = () => {
+    // const { user } = authenticatedUser;
     /**
      * Cannot read properties of undefined - what is deleteCourse from context returning? - handle forbidden
      */
-
     /*
     if (authenticatedUser !== null) {
       context.actions.deleteCourse(id, user.emailAddress, user.password);
@@ -41,7 +41,6 @@ export default function CourseDetail({ context, history }) {
       history.push("/signin");
     }
 */
-
     /*
     const {
       context: {
@@ -63,19 +62,21 @@ export default function CourseDetail({ context, history }) {
     */
   };
 
-  const authenticatedActions =
-    authenticatedUser !== null ? (
-      <>
-        <Link to={`/courses/${id}/update`} className="button">
-          Update Course
-        </Link>
-        <button className="button" onClick={handleDelete}>
-          Delete Course
-        </button>
-      </>
-    ) : null;
+  //&& authenticatedUser.emailAddress === course.user.emailAddress
 
   if (isLoaded) {
+    const authenticatedActions =
+      authenticatedUser !== null &&
+      authenticatedUser.user.emailAddress === course.user.emailAddress ? (
+        <>
+          <Link to={`/courses/${id}/update`} className="button">
+            Update Course
+          </Link>
+          <button className="button" onClick={handleDelete}>
+            Delete Course
+          </button>
+        </>
+      ) : null;
     return course !== null ? (
       <main>
         <div className="actions--bar">
