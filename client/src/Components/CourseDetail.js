@@ -31,33 +31,13 @@ export default function CourseDetail({ context, history }) {
         )
         .then((res) => {
           console.log(res.status);
-          if (res.status !== "204") {
-          } else {
+          if (res.status === 204) {
             history.push("/");
+          } else {
           }
         });
     }
-
-    /**
-     * Cannot read properties of undefined - what is deleteCourse from context returning? - handle forbidden
-     */
-    // if (authenticatedUser !== null) {
-    //   context.actions.deleteCourse(id, user.emailAddress, user.password);
-    //    .then((response) => {
-    //   console.log(response);
-    //    if (response.status !== 204) {
-    //   } else {
-    //      history.push("/");
-    //    }
-    //    });
-    //   history.push("/");
-    // } else {
-    //   history.push("/signin");
-    // }
-    console.log("pushed delete");
   };
-
-  //&& authenticatedUser.emailAddress === course.user.emailAddress
 
   if (isLoaded) {
     const authenticatedActions =
