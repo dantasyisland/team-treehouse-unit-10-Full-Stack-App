@@ -22,44 +22,39 @@ export default function CourseDetail({ context, history }) {
   useEffect(() => {}, [course]);
 
   const handleDelete = () => {
-    // const { user } = authenticatedUser;
+    if (authenticatedUser !== null) {
+      context.actions
+        .deleteCourse(
+          id,
+          authenticatedUser.user.emailAddress,
+          authenticatedUser.user.password
+        )
+        .then((res) => {
+          console.log(res.status);
+          if (res.status !== "204") {
+          } else {
+            history.push("/");
+          }
+        });
+    }
+
     /**
      * Cannot read properties of undefined - what is deleteCourse from context returning? - handle forbidden
      */
-    /*
-    if (authenticatedUser !== null) {
-      context.actions.deleteCourse(id, user.emailAddress, user.password);
-      // .then((response) => {
-      //   // console.log(response);
-      //   // if (response.status !== 204) {
-      //   // } else {
-      //   //   history.push("/");
-      //   // }
-      // });
-      history.push("/");
-    } else {
-      history.push("/signin");
-    }
-*/
-    /*
-    const {
-      context: {
-        authenticatedUser: { user },
-      },
-    } = this.props;
-    const { course } = this.state;
-
-    this.props.context.actions
-      .updateCourse(course, user.emailAddress, user.password)
-      .then((errors) => {
-        if (errors.length) {
-          this.setState({ errors });
-        } else {
-          this.props.history.push("/");
-        }
-      });
-
-    */
+    // if (authenticatedUser !== null) {
+    //   context.actions.deleteCourse(id, user.emailAddress, user.password);
+    //    .then((response) => {
+    //   console.log(response);
+    //    if (response.status !== 204) {
+    //   } else {
+    //      history.push("/");
+    //    }
+    //    });
+    //   history.push("/");
+    // } else {
+    //   history.push("/signin");
+    // }
+    console.log("pushed delete");
   };
 
   //&& authenticatedUser.emailAddress === course.user.emailAddress
