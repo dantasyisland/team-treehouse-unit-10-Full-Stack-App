@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./app.js",
-    "seed": "cross-env DB_ENABLE_LOGGING=true node './seed'",
-    "dev": "nodemon ./app.js"
+    "seed": "cross-env DB_ENABLE_LOGGING=false node './seed'",
+    "dev": "cross-env DB_ENABLE_LOGGING=false nodemon ./app.js "
   },
   "keywords": [],
   "author": "",
