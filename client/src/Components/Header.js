@@ -16,9 +16,6 @@ export default function Header({ context: { authenticatedUser } }) {
                   <span>{`Welcome, ${authenticatedUser.user.firstName} ${authenticatedUser.user.lastName}! `}</span>
                   <Link to="/signOut">Sign Out</Link>
                 </li>
-                <li>
-                  <Link to="/signin">Sign In</Link>
-                </li>
               </ul>
             </>
           ) : (
