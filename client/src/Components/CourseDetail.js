@@ -47,9 +47,9 @@ export default function CourseDetail({ context, history }) {
           <Link to={`/courses/${id}/update`} className="button">
             Update Course
           </Link>
-          <button className="button" onClick={handleDelete}>
+          <Link onClick={handleDelete} className="button">
             Delete Course
-          </button>
+          </Link>
         </>
       ) : null;
     return course !== null ? (
@@ -57,10 +57,10 @@ export default function CourseDetail({ context, history }) {
         <div className="actions--bar">
           <div className="wrap">
             {/* COPY PASTE LINKS BUT REFER TO PATH */}
+            {authenticatedActions}
             <Link to="/" className="button button-secondary">
               Return to List
             </Link>
-            {authenticatedActions}
           </div>
           <div className="wrap">
             <h2>Course Detail</h2>
