@@ -23,12 +23,21 @@ export default class UserSignIn extends Component {
               errors: ["Sign-In was unsuccessful"],
             };
           });
+          // THE CONDITION BELOW IS NOT BEING MET THIS IS WHY IT'S BEING PUSH TO ERROR
+          // user is null???
         } else {
+          if (!this.props.location.state.from.pathname) {
+            this.props.history.push("/");
+            console.log(user);
+          }
           console.log(this.props.location.state.from.pathname);
           this.props.history.push(this.props.location.state.from.pathname);
+          console.log(context);
+          console.log(user);
         }
       })
       .catch((err) => {
+        console.log(context);
         this.props.history.push("/error");
       });
   };
@@ -51,7 +60,6 @@ export default class UserSignIn extends Component {
 
   render() {
     const { username, password, errors } = this.state;
-    console.log(errors);
 
     return (
       <Form
