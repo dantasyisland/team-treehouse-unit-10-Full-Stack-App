@@ -19,72 +19,48 @@ export default function CourseDetail({ context, history }) {
     fetchData();
   }, [id]);
 
+  useEffect(() => {}, [course]);
+
   const handleDelete = () => {
-    const { user } = authenticatedUser;
-
-    /**
-     * Cannot read properties of undefined - what is deleteCourse from context returning? - handle forbidden
-     */
-
-    /*
     if (authenticatedUser !== null) {
-      context.actions.deleteCourse(id, user.emailAddress, user.password);
-      // .then((response) => {
-      //   // console.log(response);
-      //   // if (response.status !== 204) {
-      //   // } else {
-      //   //   history.push("/");
-      //   // }
-      // });
-      history.push("/");
-    } else {
-      history.push("/signin");
+      context.actions
+        .deleteCourse(
+          id,
+          authenticatedUser.user.emailAddress,
+          authenticatedUser.user.password
+        )
+        .then((res) => {
+          console.log(res.status);
+          if (res.status === 204) {
+            history.push("/");
+          } else {
+          }
+        });
     }
-*/
-
-    /*
-    const {
-      context: {
-        authenticatedUser: { user },
-      },
-    } = this.props;
-    const { course } = this.state;
-
-    this.props.context.actions
-      .updateCourse(course, user.emailAddress, user.password)
-      .then((errors) => {
-        if (errors.length) {
-          this.setState({ errors });
-        } else {
-          this.props.history.push("/");
-        }
-      });
-
-    */
   };
 
-  const authenticatedActions =
-    authenticatedUser !== null ? (
-      <>
-        <Link to={`/courses/${id}/update`} className="button">
-          Update Course
-        </Link>
-        <button className="button" onClick={handleDelete}>
-          Delete Course
-        </button>
-      </>
-    ) : null;
-
   if (isLoaded) {
+    const authenticatedActions =
+      authenticatedUser !== null &&
+      authenticatedUser.user.emailAddress === course.user.emailAddress ? (
+        <>
+          <Link to={`/courses/${id}/update`} className="button">
+            Update Course
+          </Link>
+          <Link onClick={handleDelete} className="button">
+            Delete Course
+          </Link>
+        </>
+      ) : null;
     return course !== null ? (
       <main>
         <div className="actions--bar">
           <div className="wrap">
             {/* COPY PASTE LINKS BUT REFER TO PATH */}
+            {authenticatedActions}
             <Link to="/" className="button button-secondary">
               Return to List
             </Link>
-            {authenticatedActions}
           </div>
           <div className="wrap">
             <h2>Course Detail</h2>

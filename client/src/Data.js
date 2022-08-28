@@ -119,7 +119,8 @@ export default class Data {
       return response.json().then((data) => {
         return data.errors;
       });
-    } else {
+    } else if (response.status === 404) {
+      console.log("blah");
       throw new Error();
     }
   }

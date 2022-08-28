@@ -50,6 +50,7 @@ export default class UserSignIn extends Component {
 
   render() {
     const { username, password, errors } = this.state;
+    console.log(errors);
 
     return (
       <Form
