@@ -19,6 +19,23 @@ export class Context extends Component {
     authenticatedUser: null,
   };
 
+  signUp = async (firstName, lastName, emailAddress, password) => {
+    const userInfo = {
+      firstName,
+      lastName,
+      emailAddress,
+      password,
+    };
+    const user = await this.data.createUser(userInfo);
+    if (user !== null) {
+      this.setState(() => {
+        return {
+          authenticatedUser: user,
+        };
+      });
+    }
+  };
+
   signIn = async (username, password) => {
     const user = await this.data.getUser(username, password);
 
@@ -33,6 +50,15 @@ export class Context extends Component {
       Cookies.set("authenticatedUser", JSON.stringify(user), { expires: 1 });
     }
     return user;
+  };
+
+  signOut = () => {
+    this.setState(() => {
+      return {
+        authenticatedUser: null,
+      };
+    });
+    Cookies.remove("authenticatedUser");
   };
 
   createCourse = async (course, username, password) => {
@@ -63,32 +89,6 @@ export class Context extends Component {
     if (courseToDelete !== null) {
       return courseToDelete;
     }
-  };
-
-  signUp = async (firstName, lastName, emailAddress, password) => {
-    const userInfo = {
-      firstName,
-      lastName,
-      emailAddress,
-      password,
-    };
-    const user = await this.data.createUser(userInfo);
-    if (user !== null) {
-      this.setState(() => {
-        return {
-          authenticatedUser: user,
-        };
-      });
-    }
-  };
-
-  signOut = () => {
-    this.setState(() => {
-      return {
-        authenticatedUser: null,
-      };
-    });
-    Cookies.remove("authenticatedUser");
   };
 
   render() {

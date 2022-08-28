@@ -24,7 +24,8 @@ export default class UserSignIn extends Component {
             };
           });
           // THE CONDITION BELOW IS NOT BEING MET THIS IS WHY IT'S BEING PUSH TO ERROR
-          // user is null???
+          // user is null??? - check context and state
+          // Need to access from CONTEXT not the returned user in signIn - look at signup too
         } else {
           if (!this.props.location.state.from.pathname) {
             this.props.history.push("/");
