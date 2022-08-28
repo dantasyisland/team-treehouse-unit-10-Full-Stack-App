@@ -24,7 +24,8 @@ export default class UserSignIn extends Component {
             };
           });
         } else {
-          this.props.history.push("/");
+          console.log(this.props.location.state.from.pathname);
+          this.props.history.push(this.props.location.state.from.pathname);
         }
       })
       .catch((err) => {

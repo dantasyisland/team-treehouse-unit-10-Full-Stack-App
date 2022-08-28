@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
-export default function Header({ context: { authenticatedUser } }) {
+function Header({ context: { authenticatedUser }, location }) {
   return (
     <header>
       <div className="wrap header--flex">
@@ -22,10 +23,24 @@ export default function Header({ context: { authenticatedUser } }) {
             <>
               <ul className="header--signedout">
                 <li>
-                  <Link to="/signup">Sign Up</Link>
+                  <Link
+                    to={{
+                      pathname: "/signup",
+                      state: { prevPath: location.pathname },
+                    }}
+                  >
+                    Sign Up
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/signin">Sign In</Link>
+                  <Link
+                    to={{
+                      pathname: "/signin",
+                      state: { prevPath: location.pathname },
+                    }}
+                  >
+                    Sign In
+                  </Link>
                 </li>
               </ul>
             </>
@@ -35,3 +50,5 @@ export default function Header({ context: { authenticatedUser } }) {
     </header>
   );
 }
+
+export const HeaderWithRouter = withRouter(Header);

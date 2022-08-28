@@ -1,6 +1,5 @@
 // Components
 import Courses from "./Components/Courses";
-import Header from "./Components/Header";
 
 // Styles
 import "./styles/reset.css";
@@ -15,6 +14,7 @@ import UserSignIn from "./Components/UserSignIn";
 import UserSignOut from "./Components/UserSignOut";
 import UserSignUp from "./Components/UserSignUp";
 import PrivateRoute from "./Components/PrivateRoute";
+import { HeaderWithRouter } from "./Components/Header";
 
 import withContext from "./Components/Context/Context";
 
@@ -25,7 +25,7 @@ const CreateCourseWithContext = withContext(CreateCourse);
 const UpdateCourseWithContext = withContext(UpdateCourse);
 const CourseDetailWithContext = withContext(CourseDetail);
 
-const HeaderWithContext = withContext(Header);
+const HeaderWithContext = withContext(HeaderWithRouter);
 
 function App() {
   return (
