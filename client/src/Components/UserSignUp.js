@@ -35,6 +35,7 @@ export default class UserSignUp extends Component {
       if (errors.length) {
         this.setState({ errors });
       } else {
+        // I don't have error handling if the signin fails
         context.actions.signIn(emailAddress, password).then(() => {
           this.props.history.push("/");
         });

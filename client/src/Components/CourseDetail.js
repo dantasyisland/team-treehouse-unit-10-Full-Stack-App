@@ -62,27 +62,27 @@ export default function CourseDetail({ context, history }) {
               Return to List
             </Link>
           </div>
-          <div className="wrap">
-            <h2>Course Detail</h2>
-            <form>
-              <div className="main--flex">
-                <div>
-                  <h3 className="course--detail--title">{course.title}</h3>
-                  <h4 className="course--name">{course.title}</h4>
-                  <p>{course.user.firstName}</p>
-                  <ReactMarkdown>{course.description}</ReactMarkdown>
-                </div>
-                <div>
-                  <h3 className="course--detail--title">Estimated Time</h3>
-                  <p>{course.estimatedTime}</p>
-                  <h3 className="course--detail--title">Materials Needed</h3>
-                  <ReactMarkdown className="course--detail--list">
-                    {course.materialsNeeded}
-                  </ReactMarkdown>
-                </div>
+        </div>
+        <div className="wrap">
+          <h2>Course Detail</h2>
+          <form>
+            <div className="main--flex">
+              <div>
+                <h3 className="course--detail--title">{course.title}</h3>
+                <h4 className="course--name">{course.title}</h4>
+                <p>{course.user.firstName}</p>
+                <ReactMarkdown>{course.description}</ReactMarkdown>
               </div>
-            </form>
-          </div>
+              <div>
+                <h3 className="course--detail--title">Estimated Time</h3>
+                <p>{course.estimatedTime}</p>
+                <h3 className="course--detail--title">Materials Needed</h3>
+                <ReactMarkdown className="course--detail--list">
+                  {course.materialsNeeded}
+                </ReactMarkdown>
+              </div>
+            </div>
+          </form>
         </div>
       </main>
     ) : (

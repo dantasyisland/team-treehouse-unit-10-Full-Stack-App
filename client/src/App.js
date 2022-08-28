@@ -1,7 +1,7 @@
 // Components
 import Courses from "./Components/Courses";
 
-// Styles
+// // Styles
 import "./styles/reset.css";
 import "./styles/global.css";
 

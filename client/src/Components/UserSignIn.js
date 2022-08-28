@@ -27,18 +27,14 @@ export default class UserSignIn extends Component {
           // user is null??? - check context and state
           // Need to access from CONTEXT not the returned user in signIn - look at signup too
         } else {
-          if (!this.props.location.state.from.pathname) {
+          if (this.props.location.state.prevPath === "/signin") {
             this.props.history.push("/");
-            console.log(user);
+          } else {
+            this.props.history.push(this.props.location.state.prevPath);
           }
-          console.log(this.props.location.state.from.pathname);
-          this.props.history.push(this.props.location.state.from.pathname);
-          console.log(context);
-          console.log(user);
         }
       })
       .catch((err) => {
-        console.log(context);
         this.props.history.push("/error");
       });
   };
