@@ -3,12 +3,10 @@ import Form from "./Form";
 
 export default class CreateCourse extends Component {
   state = {
-    // id: "", WILL NEED THIS SOMEWHERE
     title: "",
     description: "",
     estimatedTime: "",
     materialsNeeded: "",
-    // userId: "", WILL NEED THIS SOMEWHERE
     errors: [],
   };
 
