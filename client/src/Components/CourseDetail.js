@@ -47,7 +47,7 @@ export default function CourseDetail({ context, history }) {
           <Link to={`/courses/${id}/update`} className="button">
             Update Course
           </Link>
-          <Link onClick={handleDelete} className="button">
+          <Link to={"#"} onClick={handleDelete} className="button">
             Delete Course
           </Link>
         </>
