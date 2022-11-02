@@ -6,7 +6,6 @@ import config from "../config";
 export default class UpdateCourse extends Component {
   constructor(props) {
     super(props);
-    // has scope in constructor - global scope variables for class components?
     this.state = {
       isLoaded: false,
       course: {
@@ -20,8 +19,6 @@ export default class UpdateCourse extends Component {
   }
 
   componentDidMount() {
-    /* ---------------------- Chance to use spread operator --------------------- */
-
     const course = async () => {
       const { id } = this.props.match.params;
       await axios(config.apiBaseUrl + "/courses/" + id).then((response) => {

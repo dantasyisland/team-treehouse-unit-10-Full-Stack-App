@@ -23,9 +23,6 @@ export default class UserSignIn extends Component {
               errors: ["Sign-In was unsuccessful"],
             };
           });
-          // THE CONDITION BELOW IS NOT BEING MET THIS IS WHY IT'S BEING PUSH TO ERROR
-          // user is null??? - check context and state
-          // Need to access from CONTEXT not the returned user in signIn - look at signup too
         } else {
           if (this.props.location.state.prevPath === "/signin") {
             this.props.history.push("/");
@@ -44,7 +41,6 @@ export default class UserSignIn extends Component {
     history.push("/");
   };
 
-  // Handles state
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;

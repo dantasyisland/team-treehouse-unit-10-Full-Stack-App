@@ -10,18 +10,6 @@ export default class UserSignUp extends Component {
     errors: [],
   };
 
-  // context.actions is the key - in this case create user
-  // which uses methods from the data class
-  // context is being sent as a prop
-  // The provider and consumer are in Context.js
-  // authenticatedUser with cookie is handled in context as well
-
-  /*** I need to:
-      1. Create a createUser method in the Data class
-      2. Setup an asynchronous function which takes firstName, lastName, emailAddress and Password. emailAddress is username
-      3. If I get a userCreated I can give the user a cookie in createAccount which will be in context
-  ***/
-
   submit = () => {
     const { context } = this.props;
     const { firstName, lastName, emailAddress, password } = this.state;
@@ -35,7 +23,6 @@ export default class UserSignUp extends Component {
       if (errors.length) {
         this.setState({ errors });
       } else {
-        // I don't have error handling if the signin fails
         context.actions.signIn(emailAddress, password).then(() => {
           this.props.history.push("/");
         });

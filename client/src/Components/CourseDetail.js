@@ -56,7 +56,6 @@ export default function CourseDetail({ context, history }) {
       <main>
         <div className="actions--bar">
           <div className="wrap">
-            {/* COPY PASTE LINKS BUT REFER TO PATH */}
             {authenticatedActions}
             <Link to="/" className="button button-secondary">
               Return to List
