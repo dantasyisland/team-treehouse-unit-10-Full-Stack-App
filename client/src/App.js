@@ -17,6 +17,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import { HeaderWithRouter } from "./Components/Header";
 
 import withContext from "./Components/Context/Context";
+import NotFound from "./Components/NotFound";
 
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpWithContext = withContext(UserSignUp);
@@ -45,6 +46,7 @@ function App() {
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />
+        <Route path="/notfound" component={NotFound} />
       </Switch>
     </Router>
   );

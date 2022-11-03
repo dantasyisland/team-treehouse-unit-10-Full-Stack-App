@@ -13,11 +13,17 @@ export default function CourseDetail({ context, history }) {
     const fetchData = async () => {
       const result = await axios(config.apiBaseUrl + "/courses/" + id);
       setCourse(result.data.course);
-      setIsLoaded(true);
+      console.log(result); // Log result
+      if (result.data.course == null) {
+        console.log("NULLLLLLLL");
+        history.push("/notfound");
+      } else {
+        setIsLoaded(true);
+      }
     };
 
     fetchData();
-  }, [id]);
+  }, [id, history]);
 
   useEffect(() => {}, [course]);
 
@@ -51,7 +57,7 @@ export default function CourseDetail({ context, history }) {
             Delete Course
           </Link>
         </>
-      ) : null;
+      ) : null; // not loaded true but course is null
     return course !== null ? (
       <main>
         <div className="actions--bar">
