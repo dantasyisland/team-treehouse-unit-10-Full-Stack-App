@@ -32,19 +32,13 @@ module.exports = (sequelize, DataTypes) => {
       estimatedTime: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          notEmpty: {
-            msg: "Please enter an estimated time",
-          },
+
         },
       },
       materialsNeeded: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          notEmpty: {
-            msg: `Please enter the materials needed`,
-          },
+
         },
       },
       // USERID CREATED IN MODEL ASSOCIATIONS WITH THE FOREIGNKEY PROPERTY

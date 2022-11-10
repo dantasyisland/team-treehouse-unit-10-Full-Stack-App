@@ -86,44 +86,48 @@ export default class UpdateCourse extends Component {
         errors={this.state.errors}
         elements={
           <>
-            <input
-              id="title"
-              name="title"
-              type="text"
-              defaultValue={title}
-              onChange={this.change}
-              placeholder="Course Title"
-            />
-            <p>
-              By{" "}
-              <span>
-                {user.firstName} {user.lastName}
-              </span>
-            </p>
-            <textarea
-              id="description"
-              name="description"
-              type="text"
-              defaultValue={description}
-              onChange={this.change}
-              placeholder="Course Description"
-            />
-            <input
-              id="estimatedTime"
-              name="estimatedTime"
-              type="text"
-              defaultValue={estimatedTime}
-              onChange={this.change}
-              placeholder="Estimated Time"
-            />
-            <textarea
-              id="materialsNeeded"
-              name="materialsNeeded"
-              type="text"
-              defaultValue={materialsNeeded}
-              onChange={this.change}
-              placeholder="Materials Needed"
-            />
+            <div>
+              <input
+                id="title"
+                name="title"
+                type="text"
+                defaultValue={title}
+                onChange={this.change}
+                placeholder="Course Title"
+              />
+              <p>
+                By{" "}
+                <span>
+                  {user.firstName} {user.lastName}
+                </span>
+              </p>
+              <textarea
+                id="description"
+                name="description"
+                type="text"
+                defaultValue={description}
+                onChange={this.change}
+                placeholder="Course Description"
+              />
+            </div>
+            <div>
+              <input
+                id="estimatedTime"
+                name="estimatedTime"
+                type="text"
+                defaultValue={estimatedTime}
+                onChange={this.change}
+                placeholder="Estimated Time"
+              />
+              <textarea
+                id="materialsNeeded"
+                name="materialsNeeded"
+                type="text"
+                defaultValue={materialsNeeded}
+                onChange={this.change}
+                placeholder="Materials Needed"
+              />
+            </div>
           </>
         }
       />
