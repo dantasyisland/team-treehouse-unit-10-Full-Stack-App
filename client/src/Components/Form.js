@@ -19,19 +19,21 @@ export default function Form({
   }
 
   return (
-    <div className="form--centered">
-      <h2>{headerText}</h2>
-      <ErrorsDisplay errors={errors} />
-      <form onSubmit={handleSubmit} type="submit">
-        {elements}
-        <button className="button" type="submit">
-          {submitButtonText}
-        </button>
-        <button className="button button-secondary" onClick={handleCancel}>
-          Cancel
-        </button>
-      </form>
-    </div>
+    <main>
+      <div className="wrap">
+        <h2>{headerText}</h2>
+        <ErrorsDisplay errors={errors} />
+        <form onSubmit={handleSubmit} type="submit">
+          <div className="main--flex">{elements}</div>
+          <button className="button" type="submit">
+            {submitButtonText}
+          </button>
+          <button className="button button-secondary" onClick={handleCancel}>
+            Cancel
+          </button>
+        </form>
+      </div>
+    </main>
   );
 }
 
