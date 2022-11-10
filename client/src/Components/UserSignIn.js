@@ -57,6 +57,7 @@ export default class UserSignIn extends Component {
     return (
       <Form
         headerText={"Sign In"}
+        className={"form--centered"}
         submit={this.submit}
         submitButtonText="Sign In"
         errors={errors}

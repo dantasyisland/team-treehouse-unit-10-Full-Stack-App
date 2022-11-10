@@ -7,6 +7,7 @@ export default function Form({
   cancel,
   errors,
   elements,
+  className,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,11 +21,12 @@ export default function Form({
 
   return (
     <main>
-      <div className="wrap">
+      <div className={className}>
         <h2>{headerText}</h2>
         <ErrorsDisplay errors={errors} />
         <form onSubmit={handleSubmit} type="submit">
-          <div className="main--flex">{elements}</div>
+          {/* This is only for update and create course - part of elements? <div className="main--flex"></div> */}
+          {elements}
           <button className="button" type="submit">
             {submitButtonText}
           </button>

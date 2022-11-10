@@ -49,6 +49,7 @@ export default class UserSignUp extends Component {
     const { firstName, lastName, emailAddress, password, errors } = this.state;
     return (
       <Form
+        className={"form--centered"}
         headerText={"Sign Up"}
         submit={this.submit}
         submitButtonText="Sign Up!"
