@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Course extends Model {
@@ -16,47 +16,45 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: `Please enter a title for your course`,
-          },
-        },
+            msg: `Please enter a title for your course`
+          }
+        }
       },
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: "Please enter a course description",
-          },
-        },
+            msg: 'Please enter a course description'
+          }
+        }
       },
       estimatedTime: {
         type: DataTypes.STRING,
-        allowNull: true,
-
-        },
+        allowNull: true
       },
+
       materialsNeeded: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: true
+      }
 
-        },
-      },
       // USERID CREATED IN MODEL ASSOCIATIONS WITH THE FOREIGNKEY PROPERTY
     },
     {
       sequelize,
-      modelName: "Course",
+      modelName: 'Course'
     }
   );
 
   // Add association to user model
   Course.associate = (models) => {
     Course.belongsTo(models.User, {
-      as: "user",
+      as: 'user',
       foreignKey: {
-        fieldName: "userId",
-        allowNull: false,
-      },
+        fieldName: 'userId',
+        allowNull: false
+      }
     });
   };
   return Course;

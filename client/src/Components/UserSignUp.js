@@ -49,6 +49,7 @@ export default class UserSignUp extends Component {
     const { firstName, lastName, emailAddress, password, errors } = this.state;
     return (
       <Form
+        className={"form--centered"}
         headerText={"Sign Up"}
         submit={this.submit}
         submitButtonText="Sign Up!"
@@ -56,38 +57,50 @@ export default class UserSignUp extends Component {
         errors={errors}
         elements={
           <>
-            <input
-              id="firstName"
-              name="firstName"
-              type="text"
-              value={firstName}
-              onChange={this.change}
-              placeholder="First Name"
-            />
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              value={lastName}
-              onChange={this.change}
-              placeholder="Last Name"
-            />
-            <input
-              id="emailAddress"
-              name="emailAddress"
-              type="text"
-              value={emailAddress}
-              onChange={this.change}
-              placeholder="Email Address"
-            />
-            <input
-              id="password"
-              name="password"
-              type="text"
-              value={password}
-              onChange={this.change}
-              placeholder="Password"
-            />
+            <label htmlFor="firstName">
+              First Name
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                value={firstName}
+                onChange={this.change}
+                placeholder="First Name"
+              />
+            </label>
+            <label htmlFor="lastName">
+              Last Name
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                value={lastName}
+                onChange={this.change}
+                placeholder="Last Name"
+              />
+            </label>
+            <label htmlFor="emailAddress">
+              Email Address
+              <input
+                id="emailAddress"
+                name="emailAddress"
+                type="text"
+                value={emailAddress}
+                onChange={this.change}
+                placeholder="Email Address"
+              />
+            </label>
+            <label htmlFor="password">
+              Password
+              <input
+                id="password"
+                name="password"
+                type="text"
+                value={password}
+                onChange={this.change}
+                placeholder="Password"
+              />
+            </label>
           </>
         }
       />
