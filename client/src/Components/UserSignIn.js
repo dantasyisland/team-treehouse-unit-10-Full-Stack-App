@@ -64,22 +64,28 @@ export default class UserSignIn extends Component {
         cancel={this.cancel}
         elements={
           <>
-            <input
-              id="username"
-              name="username"
-              type="text"
-              value={username}
-              onChange={this.change}
-              placeholder="User Name"
-            />
-            <input
-              id="password"
-              name="password"
-              type="text"
-              value={password}
-              onChange={this.change}
-              placeholder="Password"
-            />
+            <label htmlFor="username">
+              Username
+              <input
+                id="username"
+                name="username"
+                type="text"
+                value={username}
+                onChange={this.change}
+                placeholder="User Name"
+              />
+            </label>
+            <label htmlFor="password">
+              Password
+              <input
+                id="password"
+                name="password"
+                type="text"
+                value={password}
+                onChange={this.change}
+                placeholder="Password"
+              />
+            </label>
           </>
         }
       />
