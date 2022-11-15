@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "./Form";
+import { Link } from "react-router-dom";
 
 export default class UserSignIn extends Component {
   state = {
@@ -55,40 +56,46 @@ export default class UserSignIn extends Component {
     const { username, password, errors } = this.state;
 
     return (
-      <Form
-        headerText={"Sign In"}
-        className={"form--centered"}
-        submit={this.submit}
-        submitButtonText="Sign In"
-        errors={errors}
-        cancel={this.cancel}
-        elements={
-          <>
-            <label htmlFor="username">
-              Username
-              <input
-                id="username"
-                name="username"
-                type="text"
-                value={username}
-                onChange={this.change}
-                placeholder="User Name"
-              />
-            </label>
-            <label htmlFor="password">
-              Password
-              <input
-                id="password"
-                name="password"
-                type="text"
-                value={password}
-                onChange={this.change}
-                placeholder="Password"
-              />
-            </label>
-          </>
-        }
-      />
+      <>
+        <Form
+          headerText={"Sign In"}
+          className={"form--centered"}
+          submit={this.submit}
+          submitButtonText="Sign In"
+          errors={errors}
+          cancel={this.cancel}
+          elements={
+            <>
+              <label htmlFor="username">
+                Username
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  value={username}
+                  onChange={this.change}
+                  placeholder="User Name"
+                />
+              </label>
+              <label htmlFor="password">
+                Password
+                <input
+                  id="password"
+                  name="password"
+                  type="text"
+                  value={password}
+                  onChange={this.change}
+                  placeholder="Password"
+                />
+              </label>
+              <p>
+                Don't have a user account? Click here to{" "}
+                <Link to={"/signup"}>Signup</Link>{" "}
+              </p>
+            </>
+          }
+        />
+      </>
     );
   }
 }

@@ -23,7 +23,9 @@ export default class UpdateCourse extends Component {
     const course = async () => {
       const { id } = this.props.match.params;
       await axios(config.apiBaseUrl + "/courses/" + id).then((response) => {
-        if (
+        if (response.data.course == null) {
+          this.props.history.push("/notfound");
+        } else if (
           response.data.course.user.emailAddress !=
           this.props.context.authenticatedUser.user.emailAddress
         ) {
