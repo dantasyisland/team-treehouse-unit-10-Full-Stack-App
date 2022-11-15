@@ -15,6 +15,7 @@ export default class UpdateCourse extends Component {
         materialsNeeded: "",
       },
       errors: [],
+      authorized: false,
     };
   }
 
@@ -22,9 +23,14 @@ export default class UpdateCourse extends Component {
     const course = async () => {
       const { id } = this.props.match.params;
       await axios(config.apiBaseUrl + "/courses/" + id).then((response) => {
-        console.log(response); // HERE
-        console.log(this.props.context.authenticatedUser);
-        this.setState({ course: response.data.course });
+        if (
+          response.data.course.user.emailAddress !=
+          this.props.context.authenticatedUser.user.emailAddress
+        ) {
+          this.props.history.push("/forbidden");
+        } else {
+          this.setState({ course: response.data.course });
+        }
       });
     };
 

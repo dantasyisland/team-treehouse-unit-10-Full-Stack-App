@@ -13,9 +13,7 @@ export default function CourseDetail({ context, history }) {
     const fetchData = async () => {
       const result = await axios(config.apiBaseUrl + "/courses/" + id);
       setCourse(result.data.course);
-      console.log(result); // Log result
       if (result.data.course == null) {
-        console.log("NULLLLLLLL");
         history.push("/notfound");
       } else {
         setIsLoaded(true);
@@ -36,7 +34,6 @@ export default function CourseDetail({ context, history }) {
           authenticatedUser.user.password
         )
         .then((res) => {
-          console.log(res.status);
           if (res.status === 204) {
             history.push("/");
           } else {
