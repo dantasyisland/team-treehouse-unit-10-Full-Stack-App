@@ -50,7 +50,9 @@ function App() {
         <Route path="/signout" component={UserSignOutWithContext} />
         <Route path="/forbidden" component={ForbiddenWithContext} />
         <Route path="/notfound" component={NotFound} />
-        <Route path="*" element={<NotFound to="/notfound" />} />
+        <Route path="*">
+          <NotFound />
+        </Route>
       </Switch>
     </Router>
   );
