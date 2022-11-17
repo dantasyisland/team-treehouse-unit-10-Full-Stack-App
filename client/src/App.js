@@ -19,6 +19,7 @@ import { HeaderWithRouter } from "./Components/Header";
 
 import withContext from "./Components/Context/Context";
 import NotFound from "./Components/NotFound";
+import UnhandledError from "./Components/UnhandledError";
 
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpWithContext = withContext(UserSignUp);
@@ -49,6 +50,7 @@ function App() {
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />
         <Route path="/forbidden" component={ForbiddenWithContext} />
+        <Route path="/error" component={UnhandledError} />
         <Route path="/notfound" component={NotFound} />
         <Route path="*">
           <NotFound />
