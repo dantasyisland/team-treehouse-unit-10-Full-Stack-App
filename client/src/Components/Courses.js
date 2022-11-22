@@ -3,14 +3,20 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import config from "../config";
 
-export default function Courses() {
+export default function Courses({ history }) {
   const [coursesData, setCourses] = useState([]);
   // const [isLoaded, setIsLoaded] = useState(false);
 
   const getCourses = async () => {
-    await axios.get(config.apiBaseUrl + "/courses").then((response) => {
-      setCourses(response.data.courses);
-    });
+    await axios
+      .get(config.apiBaseUrl + "/courses")
+      .then((response) => {
+        setCourses(response.data.courses);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        history.push({ pathname: "/error", state: { error: error.message } });
+      });
   };
 
   // Run Once

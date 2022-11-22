@@ -22,18 +22,25 @@ export default class UpdateCourse extends Component {
   componentDidMount() {
     const course = async () => {
       const { id } = this.props.match.params;
-      await axios(config.apiBaseUrl + "/courses/" + id).then((response) => {
-        if (response.data.course == null) {
-          this.props.history.push("/notfound");
-        } else if (
-          response.data.course.user.emailAddress !=
-          this.props.context.authenticatedUser.user.emailAddress
-        ) {
-          this.props.history.push("/forbidden");
-        } else {
-          this.setState({ course: response.data.course });
-        }
-      });
+      await axios(config.apiBaseUrl + "/courses/" + id)
+        .then((response) => {
+          if (response.data.course == null) {
+            this.props.history.push("/notfound");
+          } else if (
+            response.data.course.user.emailAddress !=
+            this.props.context.authenticatedUser.user.emailAddress
+          ) {
+            this.props.history.push("/forbidden");
+          } else {
+            this.setState({ course: response.data.course });
+          }
+        })
+        .catch((error) => {
+          this.props.history.push({
+            pathname: "/error",
+            state: { error: error.message },
+          });
+        });
     };
 
     course();

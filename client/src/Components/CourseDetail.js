@@ -11,7 +11,12 @@ export default function CourseDetail({ context, history }) {
   const { id } = useParams();
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(config.apiBaseUrl + "/courses/" + id);
+      const result = await axios(config.apiBaseUrl + "/courses/" + id).catch(
+        (error) => {
+          console.log(error.message);
+          history.push({ pathname: "/error", state: { error: error.message } });
+        }
+      );
       setCourse(result.data.course);
       if (result.data.course == null) {
         history.push("/notfound");
@@ -38,6 +43,10 @@ export default function CourseDetail({ context, history }) {
             history.push("/");
           } else {
           }
+        })
+        .catch((error) => {
+          console.log(error.message);
+          history.push({ pathname: "/error", state: { error: error.message } });
         });
     }
   };
