@@ -15,7 +15,6 @@ export default function CourseDetail({ context, history }) {
       setCourse(result.data.course);
       console.log(result); // Log result
       if (result.data.course == null) {
-        console.log("NULLLLLLLL");
         history.push("/notfound");
       } else {
         setIsLoaded(true);

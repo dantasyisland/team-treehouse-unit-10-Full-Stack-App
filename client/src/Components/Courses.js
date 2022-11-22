@@ -8,9 +8,14 @@ export default function Courses() {
   // const [isLoaded, setIsLoaded] = useState(false);
 
   const getCourses = async () => {
-    await axios.get(config.apiBaseUrl + "/courses").then((response) => {
-      setCourses(response.data.courses);
-    });
+    await axios
+      .get(config.apiBaseUrl + "/courses")
+      .then((response) => {
+        setCourses(response.data.courses);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   // Run Once

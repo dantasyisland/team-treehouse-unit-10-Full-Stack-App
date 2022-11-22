@@ -61,7 +61,6 @@ app.use((req, res) => {
     message: 'Route Not Found'
   });
 });
-
 // setup a global error handler
 app.use((err, req, res, next) => {
   if (enableGlobalErrorLogging) {
