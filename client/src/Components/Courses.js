@@ -7,22 +7,20 @@ export default function Courses({ history }) {
   const [coursesData, setCourses] = useState([]);
   // const [isLoaded, setIsLoaded] = useState(false);
 
-  const getCourses = async () => {
-    await axios
-      .get(config.apiBaseUrl + "/courses")
-      .then((response) => {
-        setCourses(response.data.courses);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        history.push({ pathname: "/error", state: { error: error.message } });
-      });
-  };
-
   // Run Once
   useEffect(() => {
+    const getCourses = async () => {
+      await axios
+        .get(config.apiBaseUrl + "/courses")
+        .then((response) => {
+          setCourses(response.data.courses);
+        })
+        .catch((error) => {
+          history.push({ pathname: "/error", state: { error: error.message } });
+        });
+    };
     getCourses();
-  }, []);
+  }, [history]);
 
   const courseList = coursesData.map((course) => {
     return (

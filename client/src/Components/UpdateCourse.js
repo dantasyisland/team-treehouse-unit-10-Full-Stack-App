@@ -27,7 +27,7 @@ export default class UpdateCourse extends Component {
           if (response.data.course == null) {
             this.props.history.push("/notfound");
           } else if (
-            response.data.course.user.emailAddress !=
+            response.data.course.user.emailAddress !==
             this.props.context.authenticatedUser.user.emailAddress
           ) {
             this.props.history.push("/forbidden");

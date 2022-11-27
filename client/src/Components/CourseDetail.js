@@ -13,7 +13,6 @@ export default function CourseDetail({ context, history }) {
     const fetchData = async () => {
       const result = await axios(config.apiBaseUrl + "/courses/" + id).catch(
         (error) => {
-          console.log(error.message);
           history.push({ pathname: "/error", state: { error: error.message } });
         }
       );
@@ -45,7 +44,6 @@ export default function CourseDetail({ context, history }) {
           }
         })
         .catch((error) => {
-          console.log(error.message);
           history.push({ pathname: "/error", state: { error: error.message } });
         });
     }
