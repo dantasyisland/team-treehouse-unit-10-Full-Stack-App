@@ -32,6 +32,7 @@ const user = require('./models/user');
   try {
     await db.sequelize.authenticate();
     await db.sequelize.sync();
+
     console.log('Successfully connected to database!');
   } catch (error) {
     error.message = 'Cannot connect to Database';

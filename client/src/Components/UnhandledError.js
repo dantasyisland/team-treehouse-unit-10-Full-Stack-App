@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Error(props) {
+export default function UnhandledError(props) {
   const { error } = props.location.state;
 
   return (

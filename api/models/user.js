@@ -17,10 +17,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
           notNull: {
-            msg: 'A name is required'
+            msg: 'A first name is required'
           },
           notEmpty: {
-            msg: 'Please provide a name'
+            msg: 'Please provide a first name'
           }
         }
       },
@@ -29,10 +29,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
           notNull: {
-            msg: 'A username is required'
+            msg: 'A last name is required'
           },
           notEmpty: {
-            msg: 'Please provide a username'
+            msg: 'Please provide a last name'
           }
         }
       },
@@ -50,8 +50,10 @@ module.exports = (sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         set(val) {
-          const hashedPassword = bcrypt.hashSync(val, 10);
-          this.setDataValue('password', hashedPassword);
+          if (val !== '') {
+            const hashedPassword = bcrypt.hashSync(val, 10);
+            this.setDataValue('password', hashedPassword);
+          }
         },
         validate: {
           notNull: {

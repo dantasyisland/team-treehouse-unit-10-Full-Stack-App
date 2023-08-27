@@ -5,9 +5,10 @@ import config from "../config";
 import ReactMarkdown from "react-markdown";
 
 export default function CourseDetail({ context, history }) {
-  const { authenticatedUser } = context;
+  const { authenticatedUser } = context; // authenticated user object from context - if user is authenticated
+
   const [course, setCourse] = useState({});
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false); // set to true once course is loaded
   const { id } = useParams();
   useEffect(() => {
     const fetchData = async () => {

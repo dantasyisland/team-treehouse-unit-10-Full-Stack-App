@@ -5,7 +5,6 @@ import config from "../config";
 
 export default function Courses({ history }) {
   const [coursesData, setCourses] = useState([]);
-  // const [isLoaded, setIsLoaded] = useState(false);
 
   // Run Once
   useEffect(() => {

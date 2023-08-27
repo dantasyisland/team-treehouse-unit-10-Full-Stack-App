@@ -1,6 +1,9 @@
 import config from "./config";
 
+// Class declaration for Data
+
 export default class Data {
+  // api method 
   api(
     path,
     method = "GET",

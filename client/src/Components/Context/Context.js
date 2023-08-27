@@ -4,6 +4,8 @@ import Data from "../../Data";
 
 const AppContext = createContext();
 
+
+// Class component 
 export class Context extends Component {
   constructor() {
     super();

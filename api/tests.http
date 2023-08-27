@@ -95,6 +95,19 @@ Content-Type: application/json
 
 }
 
+### Create User (No password)
+
+POST http://localhost:5000/api/users HTTP/1.1
+Authorization: Basic test@test.com:
+Content-Type: application/json
+
+{
+  "firstName": "Danny",
+  "lastName": "G",
+  "emailAddress": "dafsdfgasdfssdfgfsasdffdfd@dd.com",
+  "password":""
+}
+
 ### Create Course (Incomplete Data)
 POST http://localhost:5000/api/courses HTTP/1.1
 Authorization: Basic joe@smith.com:joepassword

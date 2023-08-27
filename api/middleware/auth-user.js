@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-const { User } = require("../models");
-const auth = require("basic-auth");
-const bcrypt = require("bcrypt");
+const { User } = require('../models');
+const auth = require('basic-auth');
+const bcrypt = require('bcrypt');
 
 // Function to authenticate the user
 exports.authenticateUser = async (req, res, next) => {
@@ -12,7 +12,7 @@ exports.authenticateUser = async (req, res, next) => {
   // Checks if credentials exist and if so checks against database to see if user exists
   if (credentials) {
     const user = await User.findOne({
-      where: { emailAddress: credentials.name },
+      where: { emailAddress: credentials.name }
     });
     console.log(JSON.stringify(user, null, 2));
 
@@ -32,12 +32,12 @@ exports.authenticateUser = async (req, res, next) => {
       message = `User not found for username: ${credentials.name}`;
     }
   } else {
-    message = "Auth header not found";
+    message = 'Auth header not found';
   }
   // response if user is not authenticated
   if (message) {
     console.warn(message);
-    res.status(401).json({ message: "Access Denied" });
+    res.status(401).json({ message: 'Access Denied' });
   } else {
     next();
   }

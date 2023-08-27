@@ -5,7 +5,7 @@ const { authenticateUser } = require("../middleware/auth-user");
 
 // Controller functions for http methods
 const {
-  getCourses,
+  getCourses,   
   createCourse,
   updateCourse,
   getCourse,
