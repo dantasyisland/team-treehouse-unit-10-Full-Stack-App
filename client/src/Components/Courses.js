@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import config from "../config";
 
 export default function Courses({ history }) {
-  const [coursesData, setCourses] = useState([]);
+  const [coursesData, setCourses] = useState([])
 
   // Run Once
   useEffect(() => {
