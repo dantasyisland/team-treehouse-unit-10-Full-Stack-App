@@ -4,8 +4,7 @@ import Data from "../../Data";
 
 const AppContext = createContext();
 
-
-// Class component 
+// Class component
 export class Context extends Component {
   constructor() {
     super();
@@ -16,10 +15,6 @@ export class Context extends Component {
 
     this.data = new Data();
   }
-
-  state = {
-    authenticatedUser: null,
-  };
 
   signUp = async (firstName, lastName, emailAddress, password) => {
     const userInfo = {
