@@ -37,7 +37,7 @@ const getCourse = asyncHandler(async (req, res) => {
       }
     ]
   });
-  res.status(200).json({ course });
+res.status(200).json({ course });
 });
 
 // Creates a new course - will handle sequelize validation errors
