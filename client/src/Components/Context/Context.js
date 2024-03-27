@@ -2,9 +2,10 @@ import React, { Component, createContext } from "react";
 import Cookies from "js-cookie";
 import Data from "../../Data";
 
+// Create context object
 const AppContext = createContext();
 
-// Class component
+// Class component for managing state and providing context data to child components
 export class Context extends Component {
   constructor() {
     super();
@@ -15,7 +16,7 @@ export class Context extends Component {
 
     this.data = new Data();
   }
-
+  // Asynchronous methods to perform operations on data and handle user sign in and sign out
   signUp = async (firstName, lastName, emailAddress, password) => {
     const userInfo = {
       firstName,
@@ -102,6 +103,7 @@ export class Context extends Component {
         deleteCourse: this.deleteCourse,
       },
     };
+    // Will be wrapped around App component to provide context throughout entire application
     return (
       <AppContext.Provider value={value}>
         {this.props.children}
@@ -112,6 +114,7 @@ export class Context extends Component {
 
 export const Consumer = AppContext.Consumer;
 
+// HOC to wrap a consumer component and render with context data
 export default function withContext(Component) {
   return function ContextComponent(props) {
     return (

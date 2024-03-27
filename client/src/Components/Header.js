@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
-function Header({ context: { authenticatedUser }, location }) {
+// Header component that will present either an option to Sign In and Sign Up or Sign Out based on if user is authenticated.
+function Header({ context: { authenticatedUser }, location: { pathname } }) {
   return (
     <header>
       <div className="wrap header--flex">
@@ -26,7 +27,7 @@ function Header({ context: { authenticatedUser }, location }) {
                   <Link
                     to={{
                       pathname: "/signup",
-                      state: { prevPath: location.pathname },
+                      state: { prevPath: pathname },
                     }}
                   >
                     Sign Up
@@ -36,7 +37,7 @@ function Header({ context: { authenticatedUser }, location }) {
                   <Link
                     to={{
                       pathname: "/signin",
-                      state: { prevPath: location.pathname },
+                      state: { prevPath: pathname },
                     }}
                   >
                     Sign In
