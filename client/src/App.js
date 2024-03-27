@@ -7,6 +7,8 @@ import "./styles/global.css";
 
 // React Router
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// Component imports
 import CourseDetail from "./Components/CourseDetail";
 import CreateCourse from "./Components/CreateCourse";
 import UpdateCourse from "./Components/UpdateCourse";
@@ -21,20 +23,21 @@ import withContext from "./Components/Context/Context";
 import NotFound from "./Components/NotFound";
 import UnhandledError from "./Components/UnhandledError";
 
+// Component wrapping for components that are using context
+const CourseDetailWithContext = withContext(CourseDetail);
+const CreateCourseWithContext = withContext(CreateCourse);
+const UpdateCourseWithContext = withContext(UpdateCourse);
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignOutWithContext = withContext(UserSignOut);
-const CreateCourseWithContext = withContext(CreateCourse);
-const UpdateCourseWithContext = withContext(UpdateCourse);
-const CourseDetailWithContext = withContext(CourseDetail);
 const ForbiddenWithContext = withContext(Forbidden);
-
 const HeaderWithContext = withContext(HeaderWithRouter);
 
 function App() {
   return (
     <Router>
       <HeaderWithContext />
+      {/* Switch for defining routes */}
       <Switch>
         <Route exact path="/" component={Courses} />
         <PrivateRoute
