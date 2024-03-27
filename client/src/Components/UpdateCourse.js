@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "./Form";
 import axios from "axios";
-import config from "../config";
+import apiBaseUrl from "../config";
 
 export default class UpdateCourse extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class UpdateCourse extends Component {
   componentDidMount() {
     const course = async () => {
       const { id } = this.props.match.params;
-      await axios(config.apiBaseUrl + "/courses/" + id)
+      await axios(apiBaseUrl + "/courses/" + id)
         .then((response) => {
           if (response.data.course == null) {
             this.props.history.push("/notfound");

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import config from "../config";
+import apiBaseUrl from "../config";
 import ReactMarkdown from "react-markdown";
 
 export default function CourseDetail({ context, history }) {
@@ -12,7 +12,7 @@ export default function CourseDetail({ context, history }) {
   const { id } = useParams();
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(config.apiBaseUrl + "/courses/" + id).catch(
+      const result = await axios(apiBaseUrl + "/courses/" + id).catch(
         (error) => {
           history.push({ pathname: "/error", state: { error: error.message } });
         }

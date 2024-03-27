@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import config from "../config";
+import apiBaseUrl from "../config";
 
 export default function Courses({ history }) {
-  const [coursesData, setCourses] = useState([])
+  const [coursesData, setCourses] = useState([]);
 
-  // Run Once
+  // Fetch courses from API then store response in coursesData state variable.
   useEffect(() => {
     const getCourses = async () => {
       await axios
-        .get(config.apiBaseUrl + "/courses")
+        .get(apiBaseUrl + "/courses")
         .then((response) => {
           setCourses(response.data.courses);
         })
@@ -21,6 +21,7 @@ export default function Courses({ history }) {
     getCourses();
   }, [history]);
 
+  // Map over courses data and return links to be displayed
   const courseList = coursesData.map((course) => {
     return (
       <Link
@@ -34,6 +35,7 @@ export default function Courses({ history }) {
     );
   });
 
+  // Returns HTML to display list of courses as well as an element to create a new course
   return (
     <main>
       <div className="wrap main--grid">
