@@ -76,6 +76,12 @@ export default class UpdateCourse extends Component {
         } else {
           this.props.history.push("/");
         }
+      })
+      .catch((error) => {
+        this.props.history.push({
+          pathname: "/error",
+          state: { error: error.message },
+        });
       });
   };
 
