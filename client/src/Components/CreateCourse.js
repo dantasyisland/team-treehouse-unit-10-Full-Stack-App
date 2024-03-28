@@ -67,7 +67,7 @@ export default class CreateCourse extends Component {
         authenticatedUser: { user },
       },
     } = this.props;
-
+    // Renders Form Component With Information Relevant to Create Course
     return (
       <Form
         className={"wrap"}

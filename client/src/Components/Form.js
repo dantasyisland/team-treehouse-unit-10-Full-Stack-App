@@ -39,6 +39,7 @@ export default function Form({
   );
 }
 
+// Will display any errors for sequelization validation errors from API
 function ErrorsDisplay({ errors }) {
   let errorsDisplay = null;
 

@@ -82,6 +82,7 @@ export default class UpdateCourse extends Component {
   cancel = () => {
     this.props.history.push("/");
   };
+  // Renders Form Component With Information Relevant to Update Course
   render() {
     const {
       context: {

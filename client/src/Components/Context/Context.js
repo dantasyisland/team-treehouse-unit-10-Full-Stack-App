@@ -89,6 +89,8 @@ export class Context extends Component {
     }
   };
 
+  // Returns a Context Provider that will be wrapped around App component to provide context throughout entire application
+
   render() {
     const { authenticatedUser } = this.state;
     const value = {
@@ -103,7 +105,6 @@ export class Context extends Component {
         deleteCourse: this.deleteCourse,
       },
     };
-    // Will be wrapped around App component to provide context throughout entire application
     return (
       <AppContext.Provider value={value}>
         {this.props.children}

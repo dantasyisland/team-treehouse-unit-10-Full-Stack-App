@@ -51,7 +51,7 @@ export default class UserSignIn extends Component {
       };
     });
   };
-
+  // Renders Form Component With Information Relevant to Sign In
   render() {
     const { username, password, errors } = this.state;
 
