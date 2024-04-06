@@ -21,7 +21,9 @@ export default class UpdateCourse extends Component {
 
   componentDidMount() {
     const course = async () => {
+      // id from params
       const { id } = this.props.match.params;
+      // API call for course will check if the user is authorized to update the course
       await axios(apiBaseUrl + "/courses/" + id)
         .then((response) => {
           if (response.data.course == null) {
@@ -35,6 +37,7 @@ export default class UpdateCourse extends Component {
             this.setState({ course: response.data.course });
           }
         })
+        // If there is an error then redirect to error page
         .catch((error) => {
           this.props.history.push({
             pathname: "/error",
@@ -45,7 +48,7 @@ export default class UpdateCourse extends Component {
 
     course();
   }
-
+  // Event handler for form change events
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -59,7 +62,7 @@ export default class UpdateCourse extends Component {
       };
     });
   };
-
+  // Event handler for form submit events will call the updateCourse function from context to update the course
   submit = () => {
     const {
       context: {

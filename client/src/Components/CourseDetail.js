@@ -10,6 +10,7 @@ export default function CourseDetail({ context, history }) {
   const [course, setCourse] = useState({});
   const [isLoaded, setIsLoaded] = useState(false); // set to true once course is loaded
   const { id } = useParams();
+  // Fetch course data from API on initial load
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(apiBaseUrl + "/courses/" + id).catch(
@@ -29,7 +30,7 @@ export default function CourseDetail({ context, history }) {
   }, [id, history]);
 
   useEffect(() => {}, [course]);
-
+  // Event handler for delete button. If user is authenticated, call deleteCourse function from context to delete the course
   const handleDelete = () => {
     if (authenticatedUser !== null) {
       context.actions
@@ -49,8 +50,9 @@ export default function CourseDetail({ context, history }) {
         });
     }
   };
-
+  // If course is loaded, render CourseDetail component
   if (isLoaded) {
+    // If user is authenticated, render buttons to update and delete course
     const authenticatedActions =
       authenticatedUser !== null &&
       authenticatedUser.user.emailAddress === course.user.emailAddress ? (

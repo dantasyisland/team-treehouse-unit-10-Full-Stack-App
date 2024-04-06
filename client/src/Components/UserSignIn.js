@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "./Form";
 import { Link } from "react-router-dom";
 
+// Class component for signing in a user
 export default class UserSignIn extends Component {
   state = {
     username: "",

@@ -1,5 +1,6 @@
 import React from "react";
 
+// Reusable form component that is rendered by CreateCourse, UpdateCourse, UserSignIn and UserSignUp components
 export default function Form({
   headerText,
   submit,
@@ -18,7 +19,7 @@ export default function Form({
     event.preventDefault();
     cancel();
   }
-
+  // Render method for Form component
   return (
     <main>
       <div className={className}>
@@ -39,7 +40,7 @@ export default function Form({
   );
 }
 
-// Will display any errors for sequelization validation errors from API
+// Will display any  sequelization validation errors from API
 function ErrorsDisplay({ errors }) {
   let errorsDisplay = null;
 

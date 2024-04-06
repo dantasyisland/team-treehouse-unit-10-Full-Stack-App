@@ -1,3 +1,4 @@
+// Component when redirected to forbidden url - will inform user that they do not have access to this course
 export default function Forbidden({
   context: {
     authenticatedUser: { user },

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Form from "./Form";
 
+// Class component for creating a new course
 export default class CreateCourse extends Component {
+  // State variables for course creation
   state = {
     title: "",
     description: "",
@@ -9,7 +11,7 @@ export default class CreateCourse extends Component {
     materialsNeeded: "",
     errors: [],
   };
-
+  // Function to handle changes to state variables
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -19,6 +21,8 @@ export default class CreateCourse extends Component {
       };
     });
   };
+
+  // Event handler for form submit events
   submit = () => {
     const { context } = this.props;
     const { title, description, estimatedTime, materialsNeeded } = this.state;
@@ -37,7 +41,7 @@ export default class CreateCourse extends Component {
       userId: id,
       emailAddress,
     };
-
+    // Create a new course in the database by calling createCourse method from context
     context.actions
       .createCourse(courseBody, emailAddress, password)
       .then((errors) => {
@@ -54,11 +58,12 @@ export default class CreateCourse extends Component {
         });
       });
   };
-
+  // Redirectors to home page when cancel button is clicked
   cancel = () => {
     this.props.history.push("/");
   };
 
+  // Render method for CreateCourse component
   render() {
     const { title, description, estimatedTime, materialsNeeded, errors } =
       this.state;
