@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Form from "./Form";
 import axios from "axios";
 import apiBaseUrl from "../config";
-
+// Class Component for updating courses. Will render a form component
 export default class UpdateCourse extends Component {
   constructor(props) {
     super(props);

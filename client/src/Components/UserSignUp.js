@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "./Form";
 
+// Class component for creating a new course. Will render a form component with information related to signing up a new user.
 export default class UserSignUp extends Component {
   state = {
     firstName: "",

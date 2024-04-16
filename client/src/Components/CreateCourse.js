@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "./Form";
 
-// Class component for creating a new course
+// Class component for creating a new course. Will render a form component
 export default class CreateCourse extends Component {
   // State variables for course creation
   state = {
