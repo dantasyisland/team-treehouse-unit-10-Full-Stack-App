@@ -96,7 +96,7 @@ export default class UserSignUp extends Component {
               <input
                 id="password"
                 name="password"
-                type="text"
+                type="password"
                 value={password}
                 onChange={this.change}
                 placeholder="Password"
