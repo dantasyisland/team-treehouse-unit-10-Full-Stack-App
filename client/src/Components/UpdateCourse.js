@@ -120,7 +120,7 @@ export default class UpdateCourse extends Component {
                     id="title"
                     name="title"
                     type="text"
-                    defaultValue={title}
+                    value={title}
                     onChange={this.change}
                     placeholder="Course Title"
                   />
@@ -137,7 +137,7 @@ export default class UpdateCourse extends Component {
                     id="description"
                     name="description"
                     type="text"
-                    defaultValue={description}
+                    value={description}
                     onChange={this.change}
                     placeholder="Course Description"
                   />
@@ -150,7 +150,7 @@ export default class UpdateCourse extends Component {
                     id="estimatedTime"
                     name="estimatedTime"
                     type="text"
-                    defaultValue={estimatedTime}
+                    value={estimatedTime}
                     onChange={this.change}
                     placeholder="Estimated Time"
                   />
@@ -161,7 +161,7 @@ export default class UpdateCourse extends Component {
                     id="materialsNeeded"
                     name="materialsNeeded"
                     type="text"
-                    defaultValue={materialsNeeded}
+                    value={materialsNeeded}
                     onChange={this.change}
                     placeholder="Materials Needed"
                   />
